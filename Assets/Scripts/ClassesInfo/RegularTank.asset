@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: RegularTank
   UnitMaxHealth: 10
-  UnitHealth: 10
+  UnitHealth: 5
   UnitMovement: 6
   UnitAttack: 5
   UnitDefense: 5
   UnitEvasiveness: 5
-  AOE: {fileID: 0}
+  UnitRange: 5
+  AOE: {fileID: 8268171039791249436, guid: 3f53b9bc835523b4ea8056bb8dbebc92, type: 3}

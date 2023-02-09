@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class CursorControls : MonoBehaviour
 {
-    // Start is called before the first frame update
     private State state = State.BeingControlled;
     private GameObject CurrentlyControlledUnit;
     private Rigidbody rigidbody;
@@ -82,7 +81,7 @@ public class CursorControls : MonoBehaviour
                 state = State.NotBeingControlled;
                 playerInputActions.CursorControls.Disable();
                 CurrentlyControlledUnit = controllableUnit.gameObject;
-                controllableUnit.SwitchToCurrentUnit();
+                StartCoroutine(controllableUnit.SwitchToCurrentUnit());
             }
         }
         

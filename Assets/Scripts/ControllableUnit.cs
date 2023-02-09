@@ -29,6 +29,7 @@ public class ControllableUnit : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         playerInputActions.UnitControls.Disable();
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
+        UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
     }
 
     // Update is called once per frame
@@ -75,8 +76,9 @@ public class ControllableUnit : MonoBehaviour
         }
     }
 
-    public void SwitchToCurrentUnit()
+    public IEnumerator SwitchToCurrentUnit()
     {
+        yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInputActions.UnitControls.Enable();
     }
@@ -85,10 +87,43 @@ public class ControllableUnit : MonoBehaviour
     {
         if(context.performed && CurrentState == State.BeingControlled)
         {
+            ReturnCursorControls();
+        }    
+    }
+
+    public void Aiming(InputAction.CallbackContext context)
+    {
+        if(context.performed && CurrentState == State.BeingControlled)
+        {
+            GameObject aoe = Instantiate(UnitClass.AOE, this.transform.position, Quaternion.identity);
             CurrentState = State.NotBeingControlled;
             playerInputActions.UnitControls.Disable();
-            StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
+            aoe.GetComponent<AOEMovement>().SwitchToAOE(GetComponent<ControllableUnit>());
             
-        }    
+        }
+    }
+
+    public IEnumerator ReturnUnitControl(bool TurnEnded)
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(!TurnEnded)
+        {
+            CurrentState = State.BeingControlled;
+            playerInputActions.UnitControls.Enable();
+        }
+        else
+        {
+            CurrentState = State.Waiting;
+            playerInputActions.UnitControls.Disable();
+            ReturnCursorControls();
+        }
+              
+    }
+
+    private void ReturnCursorControls()
+    {
+        CurrentState = State.NotBeingControlled;
+        playerInputActions.UnitControls.Disable();
+        StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
     }
 }

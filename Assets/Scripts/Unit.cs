@@ -20,18 +20,25 @@ public class Unit : ScriptableObject
     public float UnitAttack;
     public float UnitDefense;
     public float UnitEvasiveness;
+    public float UnitRange;
     public GameObject AOE;
 
-    void TakeDamage(float DamageTaken)
+    private void Awake()
+    {
+        UnitHealth = UnitMaxHealth;
+    }
+
+    public void TakeDamage(float DamageTaken)
     {
         UnitHealth -= DamageTaken;
+        Debug.Log(UnitHealth);
         if(UnitHealth <= 0)
         {
             DestroySelf();
         }
     }
 
-    void Heal(float HealAmount)
+    public void Heal(float HealAmount)
     {
         UnitHealth += HealAmount;
         if(UnitHealth > UnitMaxHealth)

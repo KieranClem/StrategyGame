@@ -762,6 +762,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "a8fb96db-dd14-4bbf-b6e9-63a6c2a9f877",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BackToUnit",
+                    "type": "Button",
+                    "id": "bb85640f-8551-4a7d-ad1a-2cef6dfa9f5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -852,6 +870,28 @@
                     "action": "RotateAOE",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e01e5c51-6df5-425d-b3f6-eb0e9e0811e2",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5765199f-242d-4443-92a3-547ea7f209ac",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackToUnit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

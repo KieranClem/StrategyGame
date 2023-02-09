@@ -784,6 +784,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8fb96db-dd14-4bbf-b6e9-63a6c2a9f877"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BackToUnit"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb85640f-8551-4a7d-ad1a-2cef6dfa9f5e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -874,6 +892,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""RotateAOE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e01e5c51-6df5-425d-b3f6-eb0e9e0811e2"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5765199f-242d-4443-92a3-547ea7f209ac"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BackToUnit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -967,6 +1007,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_AimControls = asset.FindActionMap("AimControls", throwIfNotFound: true);
         m_AimControls_Movement = m_AimControls.FindAction("Movement", throwIfNotFound: true);
         m_AimControls_RotateAOE = m_AimControls.FindAction("RotateAOE", throwIfNotFound: true);
+        m_AimControls_Fire = m_AimControls.FindAction("Fire", throwIfNotFound: true);
+        m_AimControls_BackToUnit = m_AimControls.FindAction("BackToUnit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1231,12 +1273,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IAimControlsActions m_AimControlsActionsCallbackInterface;
     private readonly InputAction m_AimControls_Movement;
     private readonly InputAction m_AimControls_RotateAOE;
+    private readonly InputAction m_AimControls_Fire;
+    private readonly InputAction m_AimControls_BackToUnit;
     public struct AimControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public AimControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_AimControls_Movement;
         public InputAction @RotateAOE => m_Wrapper.m_AimControls_RotateAOE;
+        public InputAction @Fire => m_Wrapper.m_AimControls_Fire;
+        public InputAction @BackToUnit => m_Wrapper.m_AimControls_BackToUnit;
         public InputActionMap Get() { return m_Wrapper.m_AimControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1252,6 +1298,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateAOE.started -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnRotateAOE;
                 @RotateAOE.performed -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnRotateAOE;
                 @RotateAOE.canceled -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnRotateAOE;
+                @Fire.started -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnFire;
+                @BackToUnit.started -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnBackToUnit;
+                @BackToUnit.performed -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnBackToUnit;
+                @BackToUnit.canceled -= m_Wrapper.m_AimControlsActionsCallbackInterface.OnBackToUnit;
             }
             m_Wrapper.m_AimControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -1262,6 +1314,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RotateAOE.started += instance.OnRotateAOE;
                 @RotateAOE.performed += instance.OnRotateAOE;
                 @RotateAOE.canceled += instance.OnRotateAOE;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
+                @BackToUnit.started += instance.OnBackToUnit;
+                @BackToUnit.performed += instance.OnBackToUnit;
+                @BackToUnit.canceled += instance.OnBackToUnit;
             }
         }
     }
@@ -1340,5 +1398,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotateAOE(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
+        void OnBackToUnit(InputAction.CallbackContext context);
     }
 }

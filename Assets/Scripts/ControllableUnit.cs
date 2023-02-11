@@ -19,6 +19,7 @@ public class ControllableUnit : MonoBehaviour
     public float Speed = 10f;
     private Vector3 startpos;
     private GameObject Cursor;
+    private TurnManager turnManager;
 
 
     // Start is called before the first frame update
@@ -115,6 +116,7 @@ public class ControllableUnit : MonoBehaviour
         {
             CurrentState = State.Waiting;
             playerInputActions.UnitControls.Disable();
+            turnManager.AddWaitingPlayerUnit();
             ReturnCursorControls();
         }
               

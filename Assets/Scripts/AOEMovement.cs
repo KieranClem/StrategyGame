@@ -75,7 +75,7 @@ public class AOEMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (UnitsInRange.Count >= 1)
+            if (UnitsInRange.Count > 0)
             {
                 foreach (Unit unit in UnitsInRange)
                 {

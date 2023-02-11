@@ -76,7 +76,7 @@ public class CursorControls : MonoBehaviour
 
         if(context.performed)
         {
-            if(controllableUnit && state == State.BeingControlled)
+            if(controllableUnit && state == State.BeingControlled && controllableUnit.CurrentState != State.Waiting)
             {
                 state = State.NotBeingControlled;
                 playerInputActions.CursorControls.Disable();

@@ -31,6 +31,7 @@ public class ControllableUnit : MonoBehaviour
         playerInputActions.UnitControls.Disable();
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
         UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
+        turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
     }
 
     // Update is called once per frame
@@ -124,8 +125,17 @@ public class ControllableUnit : MonoBehaviour
 
     private void ReturnCursorControls()
     {
-        CurrentState = State.NotBeingControlled;
+        if (CurrentState != State.Waiting)
+        {
+            CurrentState = State.NotBeingControlled;
+        }
         playerInputActions.UnitControls.Disable();
         StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
+    }
+
+    public void StartOfNewTurn()
+    {
+        startpos = this.transform.position;
+        CurrentState = State.NotBeingControlled;
     }
 }

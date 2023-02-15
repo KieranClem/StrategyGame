@@ -11,6 +11,7 @@ public class AOEMovement : MonoBehaviour
     public float Speed = 10f;
     private Vector3 startpos;
     private ControllableUnit UnitAiming;
+    private EnemyUnitAI enemyInControl;
     List<Unit> UnitsInRange = new List<Unit>();
 
 
@@ -63,6 +64,11 @@ public class AOEMovement : MonoBehaviour
         {
             UnitsInRange.Add(other.GetComponent<ControllableUnit>().UnitClass);
         }
+
+        if(other.tag == "EnemyUnit")
+        {
+            UnitsInRange.Add(other.GetComponent<EnemyUnitAI>().EnemyClass);
+        }
     }
 
     public void SwitchToAOE(ControllableUnit OriginalUnit)
@@ -73,7 +79,7 @@ public class AOEMovement : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && CurrentState == State.BeingControlled)
         {
             if (UnitsInRange.Count > 0)
             {
@@ -103,5 +109,27 @@ public class AOEMovement : MonoBehaviour
         StartCoroutine(UnitAiming.ReturnUnitControl(TurnEnded));
         yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);
+    }
+
+    public void EnemyTurn(EnemyUnitAI enemy)
+    {
+        enemyInControl = enemy;
+        CurrentState = State.Waiting;
+    }
+
+    public IEnumerator EnemyAttack()
+    {
+        if (UnitsInRange.Count > 0)
+        {
+            foreach (Unit unit in UnitsInRange)
+            {
+                unit.TakeDamage(enemyInControl.EnemyClass.UnitAttack);
+            }
+
+            enemyInControl.NotifOfAttackFinishing();
+            yield return new WaitForSeconds(0.01f);
+            Destroy(this.gameObject);
+
+        }
     }
 }

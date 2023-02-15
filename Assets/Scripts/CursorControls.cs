@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CursorControls : MonoBehaviour
 {
-    private State state = State.BeingControlled;
+    [HideInInspector]public State state = State.BeingControlled;
     private GameObject CurrentlyControlledUnit;
     private Rigidbody rigidbody;
     //private PlayerInput playerInput;
@@ -13,6 +13,7 @@ public class CursorControls : MonoBehaviour
     public float Speed = 10f;
 
     private ControllableUnit controllableUnit;
+    private TurnManager turnManager;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class CursorControls : MonoBehaviour
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.CursorControls.Enable();
+        turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
     }
 
     private void Update()
@@ -76,7 +78,7 @@ public class CursorControls : MonoBehaviour
 
         if(context.performed)
         {
-            if(controllableUnit && state == State.BeingControlled && controllableUnit.CurrentState != State.Waiting)
+            if(controllableUnit && (state == State.BeingControlled) && (controllableUnit.CurrentState != State.Waiting))
             {
                 state = State.NotBeingControlled;
                 playerInputActions.CursorControls.Disable();

@@ -40,7 +40,6 @@ public class EnemyUnitAI : MonoBehaviour
             {
                 AimAttack();
                 nav.isStopped = true;
-                Debug.Log("here");
             }
         }
         else if(Aiming)

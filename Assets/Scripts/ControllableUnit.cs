@@ -20,6 +20,8 @@ public class ControllableUnit : MonoBehaviour
     private Vector3 startpos;
     private GameObject Cursor;
     private TurnManager turnManager;
+    private GameObject SpawnedRangeIndicator;
+  
 
 
     // Start is called before the first frame update
@@ -83,6 +85,9 @@ public class ControllableUnit : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInputActions.UnitControls.Enable();
+        GameObject range = Instantiate(UnitClass.MovementCircle, this.transform.position, Quaternion.identity);
+        SpawnedRangeIndicator = range;
+        SpawnedRangeIndicator.transform.localScale = new Vector3(UnitClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, UnitClass.UnitMovement * 2);
     }
 
     public void BackToCursor(InputAction.CallbackContext context)
@@ -99,6 +104,7 @@ public class ControllableUnit : MonoBehaviour
         {
             GameObject aoe = Instantiate(UnitClass.AOE, this.transform.position, Quaternion.identity);
             CurrentState = State.NotBeingControlled;
+            rigidbody.velocity = Vector3.zero;
             playerInputActions.UnitControls.Disable();
             aoe.GetComponent<AOEMovement>().SwitchToAOE(GetComponent<ControllableUnit>());
             
@@ -129,6 +135,7 @@ public class ControllableUnit : MonoBehaviour
         {
             CurrentState = State.NotBeingControlled;
         }
+        Destroy(SpawnedRangeIndicator);
         playerInputActions.UnitControls.Disable();
         StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
     }

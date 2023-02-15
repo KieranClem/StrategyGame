@@ -22,6 +22,7 @@ public class Unit : ScriptableObject
     public float UnitEvasiveness;
     public float UnitRange;
     public GameObject AOE;
+    public GameObject MovementCircle;
 
     private void Awake()
     {

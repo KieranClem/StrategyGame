@@ -182,6 +182,7 @@ MonoBehaviour:
   hasMoved: 0
   EnemyClass: {fileID: 11400000, guid: 93f28e1cef1e0474eb11a21702136a13, type: 2}
   UnitSpeed: 5
+  AOESpeed: 5
 --- !u!65 &64657777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9fbe3e4bcae3eab4c906447de2cf6646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -594,6 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123f7db35fa82884986b123472460916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   Speed: 50
 --- !u!54 &561120410
 Rigidbody:
@@ -1237,6 +1239,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 24d36252-4cfe-4081-a098-53c12cdffaa0
     m_ActionName: AimControls/RotateAOE[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8fb96db-dd14-4bbf-b6e9-63a6c2a9f877
+    m_ActionName: AimControls/Fire[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb85640f-8551-4a7d-ad1a-2cef6dfa9f5e
+    m_ActionName: AimControls/BackToUnit[/Keyboard/backspace]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UnitControls

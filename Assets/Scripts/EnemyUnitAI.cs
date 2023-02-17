@@ -11,6 +11,7 @@ public class EnemyUnitAI : MonoBehaviour
     //The speed in which the unit moves around the arena, not it's anything considering in regards to combat of how far the enemy can move
     public float UnitSpeed = 5f;
     public float AOESpeed = 5f;
+    private float EnemyHealth;
     private Transform Target = null;
     private NavMeshAgent nav;
     private Vector3 startpos;
@@ -24,6 +25,7 @@ public class EnemyUnitAI : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         nav.isStopped = true;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
+        EnemyHealth = EnemyClass.UnitMaxHealth;
     }
 
     // Update is called once per frame
@@ -69,7 +71,7 @@ public class EnemyUnitAI : MonoBehaviour
 
     public void ActivateMovement()
     {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, EnemyClass.UnitMovement + EnemyClass.UnitRange);
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, (EnemyClass.UnitMovement * 2) + (EnemyClass.UnitRange*2));
         Transform clostestPlayerUnit = null;
         float Distance = 0f;
         for(int i = 0; i < colliders.Length; i++)
@@ -97,5 +99,33 @@ public class EnemyUnitAI : MonoBehaviour
         currentState = State.Waiting;
         nav.isStopped = true;
         turnManager.AddWaitingEnemyUnit();
+    }
+
+    public void TakeDamage(float DamageDelt, bool hitBySelf)
+    {
+        EnemyHealth = EnemyClass.TakeDamage(DamageDelt, EnemyHealth);
+        if(EnemyHealth <= 0)
+        {
+            if(hitBySelf)
+            {
+                EnemyHealth = 1;
+            }
+            else
+            {
+                //Death state
+                DestroySelf();
+            }
+
+        }
+    }
+
+    private void DestroySelf()
+    {
+        turnManager.RemoveEnemyUnit(this);
+        if(currentState == State.Waiting)
+        {
+            turnManager.CheckIfDestoryedUnitIsPartOfTurn(this.gameObject);
+        }
+        Destroy(gameObject);
     }
 }

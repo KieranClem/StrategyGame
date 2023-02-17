@@ -21,6 +21,7 @@ public class ControllableUnit : MonoBehaviour
     private GameObject Cursor;
     private TurnManager turnManager;
     private GameObject SpawnedRangeIndicator;
+    private float UnitHealth;
   
 
 
@@ -34,6 +35,7 @@ public class ControllableUnit : MonoBehaviour
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
         UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
+        UnitHealth = UnitClass.UnitMaxHealth;
     }
 
     // Update is called once per frame
@@ -144,5 +146,33 @@ public class ControllableUnit : MonoBehaviour
     {
         startpos = this.transform.position;
         CurrentState = State.NotBeingControlled;
+    }
+
+    public void TakeDamage(float DamageDelt, bool hitBySelf)
+    {
+        UnitHealth = UnitClass.TakeDamage(DamageDelt, UnitHealth);
+        if(UnitHealth <= 0)
+        {
+            if(hitBySelf)
+            {
+                UnitHealth = 1;
+            }
+            else
+            {
+                //Death state here
+                DestroySelf();
+            }
+
+        }
+    }
+
+    private void DestroySelf()
+    {
+        turnManager.RemoveControllableUnit(this);
+        if(CurrentState == State.Waiting)
+        {
+            turnManager.CheckIfDestoryedUnitIsPartOfTurn(this.gameObject);
+        }
+        Destroy(gameObject);
     }
 }

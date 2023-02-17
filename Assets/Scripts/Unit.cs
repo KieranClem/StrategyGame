@@ -29,14 +29,10 @@ public class Unit : ScriptableObject
         UnitHealth = UnitMaxHealth;
     }
 
-    public void TakeDamage(float DamageTaken)
+    public float TakeDamage(float DamageTaken, float UnitCurrentHealth)
     {
-        UnitHealth -= DamageTaken;
-        Debug.Log(UnitHealth);
-        if(UnitHealth <= 0)
-        {
-            DestroySelf();
-        }
+        UnitCurrentHealth -= DamageTaken;
+        return UnitCurrentHealth;
     }
 
     public void Heal(float HealAmount)
@@ -46,10 +42,5 @@ public class Unit : ScriptableObject
         {
             UnitHealth = UnitMaxHealth;
         }
-    }
-
-    void DestroySelf()
-    {
-
     }
 }

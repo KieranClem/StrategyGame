@@ -28,7 +28,7 @@ public class CursorControls : MonoBehaviour
 
     private void Update()
     {
-        if (state == State.NotBeingControlled)
+        if (state == State.NotBeingControlled && CurrentlyControlledUnit != null)
         {
             this.transform.position = CurrentlyControlledUnit.transform.position;
         }

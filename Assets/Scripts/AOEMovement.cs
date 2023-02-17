@@ -12,7 +12,7 @@ public class AOEMovement : MonoBehaviour
     private Vector3 startpos;
     private ControllableUnit UnitAiming;
     private EnemyUnitAI enemyInControl;
-    List<Unit> UnitsInRange = new List<Unit>();
+    List<GameObject> UnitsInRange = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -62,12 +62,25 @@ public class AOEMovement : MonoBehaviour
     {
         if(other.tag == "ControllableUnit")
         {
-            UnitsInRange.Add(other.GetComponent<ControllableUnit>().UnitClass);
+            UnitsInRange.Add(other.gameObject);
         }
 
         if(other.tag == "EnemyUnit")
         {
-            UnitsInRange.Add(other.GetComponent<EnemyUnitAI>().EnemyClass);
+            UnitsInRange.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "ControllableUnit")
+        {
+            UnitsInRange.Remove(other.gameObject);
+        }
+
+        if (other.tag == "EnemyUnit")
+        {
+            UnitsInRange.Remove(other.gameObject);
         }
     }
 
@@ -83,9 +96,23 @@ public class AOEMovement : MonoBehaviour
         {
             if (UnitsInRange.Count > 0)
             {
-                foreach (Unit unit in UnitsInRange)
+                foreach (GameObject unit in UnitsInRange)
                 {
-                    unit.TakeDamage(UnitAiming.UnitClass.UnitAttack);
+                    bool Hitself = false;
+                    if (unit == UnitAiming.gameObject)
+                        Hitself = true;
+
+                    //unit.TakeDamage(UnitAiming.UnitClass.UnitAttack);
+                    if(unit.CompareTag("ControllableUnit"))
+                    {
+                        unit.GetComponent<ControllableUnit>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
+                    }
+                    else if(unit.CompareTag("EnemyUnit"))
+                    {
+                        unit.GetComponent<EnemyUnitAI>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
+                    }
+
+                    
                 }
 
                 StartCoroutine(ExitAOE(true));
@@ -121,9 +148,22 @@ public class AOEMovement : MonoBehaviour
     {
         if (UnitsInRange.Count > 0)
         {
-            foreach (Unit unit in UnitsInRange)
+            foreach (GameObject unit in UnitsInRange)
             {
-                unit.TakeDamage(enemyInControl.EnemyClass.UnitAttack);
+                //unit.TakeDamage(enemyInControl.EnemyClass.UnitAttack);
+                bool Hitself = false;
+                if (unit == enemyInControl.gameObject)
+                    Hitself = true;
+
+                if (unit.CompareTag("ControllableUnit"))
+                {
+                    unit.GetComponent<ControllableUnit>().TakeDamage(enemyInControl.EnemyClass.UnitAttack, Hitself);
+                }
+                else if (unit.CompareTag("EnemyUnit"))
+                {
+                    unit.GetComponent<EnemyUnitAI>().TakeDamage(enemyInControl.EnemyClass.UnitAttack, Hitself);
+                }
+
             }
 
             enemyInControl.NotifOfAttackFinishing();

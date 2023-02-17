@@ -99,4 +99,35 @@ public class TurnManager : MonoBehaviour
             currentlyMovingEnemy = EnemyUnits[WaitingEnemyUnits].transform;
         }
     }
+
+    public void RemoveControllableUnit(ControllableUnit controllableUnit)
+    {
+        PlayerUnits.Remove(controllableUnit.gameObject);
+        if(PlayerUnits.Count <= 0)
+        {
+            //Game Over conditions go here
+        }
+    }
+
+    public void RemoveEnemyUnit(EnemyUnitAI enemyUnitAI)
+    {
+        EnemyUnits.Remove(enemyUnitAI.gameObject);
+        if(EnemyUnits.Count <= 0)
+        {
+            //Win condition goes here
+        }
+    }
+
+    //Checks if a destoryed and waiting unit was a part of the current turn, if it is the waiting variable will lower as to prevent a unit from not being able to attack
+    public void CheckIfDestoryedUnitIsPartOfTurn(GameObject DeathRowUnit)
+    {
+        if(DeathRowUnit.CompareTag("ControllableUnit") && (turn == CurrentTurn.PlayerTurn))
+        {
+            WaitingPlayerUnits -= 1;
+        }
+        else if(DeathRowUnit.CompareTag("EnemyUnit") && (turn == CurrentTurn.EnemyTurn))
+        {
+            WaitingEnemyUnits -= 1;
+        }
+    }
 }

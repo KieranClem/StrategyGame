@@ -13,6 +13,8 @@ public class AOEMovement : MonoBehaviour
     private ControllableUnit UnitAiming;
     private EnemyUnitAI enemyInControl;
     List<GameObject> UnitsInRange = new List<GameObject>();
+    private AudioSource audioSource;
+    public GameObject explosion;
 
 
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class AOEMovement : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         playerInputActions.AimControls.Enable();
         rigidbody = GetComponent<Rigidbody>();
+        audioSource = this.GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -133,6 +136,9 @@ public class AOEMovement : MonoBehaviour
     {
         CurrentState = State.NotBeingControlled;
         playerInputActions.AimControls.Disable();
+        Instantiate(explosion, this.transform.position, Quaternion.identity);
+        audioSource.Play();
+        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
         StartCoroutine(UnitAiming.ReturnUnitControl(TurnEnded));
         yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);

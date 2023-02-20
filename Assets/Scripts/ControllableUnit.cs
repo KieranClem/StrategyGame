@@ -87,7 +87,8 @@ public class ControllableUnit : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInputActions.UnitControls.Enable();
-        GameObject range = Instantiate(UnitClass.MovementCircle, this.transform.position, Quaternion.identity);
+        Vector3 RangeSpawnLocation = new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z);
+        GameObject range = Instantiate(UnitClass.MovementCircle, RangeSpawnLocation, Quaternion.identity);
         SpawnedRangeIndicator = range;
         SpawnedRangeIndicator.transform.localScale = new Vector3(UnitClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, UnitClass.UnitMovement * 2);
     }

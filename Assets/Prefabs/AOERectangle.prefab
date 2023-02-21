@@ -248,6 +248,7 @@ MonoBehaviour:
   CurrentState: 1
   Speed: 10
   explosion: {fileID: 5040728934535680121, guid: ea008b6a529fa1d4fbc1d6a0508d1bd7, type: 3}
+  DamageText: {fileID: 6024482449157247473, guid: 183d73ecd4695214ebb7afa40be2fe5c, type: 3}
 --- !u!54 &3844578212304825222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a84038bc57c0a2408e8b09e9c0f9554, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 15af9a7f6e66e734aa3e47a9af3cf890, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

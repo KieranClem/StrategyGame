@@ -15,7 +15,7 @@ public class AOEMovement : MonoBehaviour
     List<GameObject> UnitsInRange = new List<GameObject>();
     private AudioSource audioSource;
     public GameObject explosion;
-
+    public GameObject DamageText;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,8 @@ public class AOEMovement : MonoBehaviour
             float dist = Mathf.Floor(Vector3.Distance(startpos, transform.position));
 
             Vector2 inputVector = playerInputActions.AimControls.Movement.ReadValue<Vector2>();
+            Vector2 rotationVector = playerInputActions.AimControls.RotateAOE.ReadValue<Vector2>();
+
             if (dist > UnitAiming.UnitClass.UnitRange)
             {
                 rigidbody.AddForce(-rigidbody.velocity * (Speed * 10f));
@@ -42,6 +44,11 @@ public class AOEMovement : MonoBehaviour
             else
             {
                 rigidbody.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * Speed, ForceMode.Force);
+            }
+
+            if (rotationVector.x > 0 || rotationVector.x < 0)
+            {
+                transform.Rotate(Vector3.up * rotationVector.x * 100f * Time.deltaTime);
             }
 
             if (rigidbody.velocity.magnitude > Speed)
@@ -105,8 +112,10 @@ public class AOEMovement : MonoBehaviour
                     if (unit == UnitAiming.gameObject)
                         Hitself = true;
 
+                    
+
                     //unit.TakeDamage(UnitAiming.UnitClass.UnitAttack);
-                    if(unit.CompareTag("ControllableUnit"))
+                    if (unit.CompareTag("ControllableUnit"))
                     {
                         unit.GetComponent<ControllableUnit>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
                     }
@@ -115,7 +124,8 @@ public class AOEMovement : MonoBehaviour
                         unit.GetComponent<EnemyUnitAI>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
                     }
 
-                    
+                    GameObject TextPop = Instantiate(DamageText, unit.transform.position, Quaternion.identity);
+                    TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
                 }
 
                 StartCoroutine(ExitAOE(true));
@@ -171,6 +181,10 @@ public class AOEMovement : MonoBehaviour
                 }
 
             }
+
+            Instantiate(explosion, this.transform.position, Quaternion.identity);
+            audioSource.Play();
+            yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
 
             enemyInControl.NotifOfAttackFinishing();
             yield return new WaitForSeconds(0.01f);

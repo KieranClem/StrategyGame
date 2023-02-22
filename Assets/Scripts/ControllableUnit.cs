@@ -87,10 +87,23 @@ public class ControllableUnit : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInputActions.UnitControls.Enable();
+
+    }
+
+    public void ShowMovementRange()
+    {
         Vector3 RangeSpawnLocation = new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z);
         GameObject range = Instantiate(UnitClass.MovementCircle, RangeSpawnLocation, Quaternion.identity);
         SpawnedRangeIndicator = range;
         SpawnedRangeIndicator.transform.localScale = new Vector3(UnitClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, UnitClass.UnitMovement * 2);
+    }
+
+    public void StopShowingMovementRange()
+    {
+        if (SpawnedRangeIndicator)
+        {
+            Destroy(SpawnedRangeIndicator);
+        }
     }
 
     public void BackToCursor(InputAction.CallbackContext context)
@@ -99,6 +112,15 @@ public class ControllableUnit : MonoBehaviour
         {
             ReturnCursorControls();
         }    
+    }
+
+    public void Wait(InputAction.CallbackContext context)
+    {
+        if (context.performed && CurrentState == State.BeingControlled)
+        {
+            
+            StartCoroutine(ReturnUnitControl(true));
+        }
     }
 
     public void Aiming(InputAction.CallbackContext context)
@@ -117,6 +139,7 @@ public class ControllableUnit : MonoBehaviour
     public IEnumerator ReturnUnitControl(bool TurnEnded)
     {
         yield return new WaitForSeconds(0.1f);
+        //Checks if the unit has finished it's turn or not
         if(!TurnEnded)
         {
             CurrentState = State.BeingControlled;
@@ -137,8 +160,10 @@ public class ControllableUnit : MonoBehaviour
         if (CurrentState != State.Waiting)
         {
             CurrentState = State.NotBeingControlled;
+            //if the player doesn't wait the unit will return to start pos
+            transform.position = startpos;
         }
-        Destroy(SpawnedRangeIndicator);
+        StopShowingMovementRange();
         playerInputActions.UnitControls.Disable();
         StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
     }
@@ -156,6 +181,7 @@ public class ControllableUnit : MonoBehaviour
         {
             if(hitBySelf)
             {
+                //prevents a unit from killing themself
                 UnitHealth = 1;
             }
             else

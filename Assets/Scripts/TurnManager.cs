@@ -58,7 +58,7 @@ public class TurnManager : MonoBehaviour
             {
                 enemy.GetComponent<EnemyUnitAI>().currentState = State.NotBeingControlled;
             }
-            EnemyUnits[0].GetComponent<EnemyUnitAI>().ActivateMovement();
+            StartCoroutine(EnemyUnits[0].GetComponent<EnemyUnitAI>().ActivateMovement());
             currentlyMovingEnemy = EnemyUnits[0].GetComponent<Transform>();
             turn = CurrentTurn.EnemyTurn;
             cursorLocation.GetComponent<CursorControls>().state = State.Waiting;
@@ -95,7 +95,7 @@ public class TurnManager : MonoBehaviour
         }
         else
         {
-            EnemyUnits[WaitingEnemyUnits].GetComponent<EnemyUnitAI>().ActivateMovement();
+            StartCoroutine(EnemyUnits[WaitingEnemyUnits].GetComponent<EnemyUnitAI>().ActivateMovement());
             currentlyMovingEnemy = EnemyUnits[WaitingEnemyUnits].transform;
         }
     }

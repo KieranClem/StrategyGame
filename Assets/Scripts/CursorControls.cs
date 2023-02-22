@@ -62,6 +62,12 @@ public class CursorControls : MonoBehaviour
         if(other.tag == "ControllableUnit")
         {
             controllableUnit = other.GetComponent<ControllableUnit>();
+            controllableUnit.ShowMovementRange();
+        }
+
+        if(other.tag == "EnemyUnit")
+        {
+            other.GetComponent<EnemyUnitAI>().ShowMovementRange();
         }
     }
 
@@ -69,7 +75,13 @@ public class CursorControls : MonoBehaviour
     {
         if (other.tag == "ControllableUnit")
         {
+            controllableUnit.StopShowingMovementRange();
             controllableUnit = null;
+        }
+
+        if (other.tag == "EnemyUnit")
+        {
+            other.GetComponent<EnemyUnitAI>().StopShowingMovementRange();
         }
     }
 

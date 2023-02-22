@@ -124,7 +124,8 @@ public class AOEMovement : MonoBehaviour
                         unit.GetComponent<EnemyUnitAI>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
                     }
 
-                    GameObject TextPop = Instantiate(DamageText, unit.transform.position, Quaternion.identity);
+                    Vector3 PopUpSpawnPoint = new Vector3( unit.transform.position.x, unit.transform.position.y + 2, unit.transform.position.z);
+                    GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
                     TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
                 }
 
@@ -179,6 +180,10 @@ public class AOEMovement : MonoBehaviour
                 {
                     unit.GetComponent<EnemyUnitAI>().TakeDamage(enemyInControl.EnemyClass.UnitAttack, Hitself);
                 }
+
+                Vector3 PopUpSpawnPoint = new Vector3(unit.transform.position.x, unit.transform.position.y + 2, unit.transform.position.z);
+                GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
+                TextPop.GetComponent<DamagePopUp>().SetUp(enemyInControl.EnemyClass.UnitAttack);
 
             }
 

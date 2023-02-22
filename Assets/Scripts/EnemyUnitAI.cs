@@ -12,12 +12,15 @@ public class EnemyUnitAI : MonoBehaviour
     public float UnitSpeed = 5f;
     public float AOESpeed = 5f;
     private float EnemyHealth;
+    //Navigation variables
     private Transform Target = null;
     private NavMeshAgent nav;
     private Vector3 startpos;
     private TurnManager turnManager;
     private bool Aiming = false;
     private GameObject AOE;
+
+    private GameObject SpawnedRangeIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class EnemyUnitAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if(currentState == State.BeingControlled && !Aiming)
         {
             float dist = Mathf.Floor(Vector3.Distance(startpos, transform.position));
@@ -69,7 +73,7 @@ public class EnemyUnitAI : MonoBehaviour
         Aiming = true;
     }
 
-    public void ActivateMovement()
+    public IEnumerator ActivateMovement()
     {
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, (EnemyClass.UnitMovement * 2) + (EnemyClass.UnitRange*2));
         Transform clostestPlayerUnit = null;
@@ -89,6 +93,8 @@ public class EnemyUnitAI : MonoBehaviour
 
         startpos = this.transform.position;
         Target = clostestPlayerUnit;
+        //The second waiting is here solely to give the effect of the enemy thinking about what to do
+        yield return new WaitForSeconds(0.8f);
         nav.SetDestination(Target.position);
         nav.isStopped = false;
         currentState = State.BeingControlled;
@@ -118,6 +124,24 @@ public class EnemyUnitAI : MonoBehaviour
 
         }
     }
+
+
+    public void ShowMovementRange()
+    {
+        Vector3 RangeSpawnLocation = new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z);
+        GameObject range = Instantiate(EnemyClass.MovementCircle, RangeSpawnLocation, Quaternion.identity);
+        SpawnedRangeIndicator = range;
+        SpawnedRangeIndicator.transform.localScale = new Vector3(EnemyClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, EnemyClass.UnitMovement * 2);
+    }
+
+    public void StopShowingMovementRange()
+    {
+        if (SpawnedRangeIndicator)
+        {
+            Destroy(SpawnedRangeIndicator);
+        }
+    }
+
 
     private void DestroySelf()
     {

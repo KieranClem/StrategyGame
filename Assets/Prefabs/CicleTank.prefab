@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8268171039791249436
+--- !u!1 &1064886890577989863
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8268171039791249432}
-  - component: {fileID: 8268171039791249439}
-  - component: {fileID: 8268171039791249438}
-  - component: {fileID: 8268171039791249437}
-  - component: {fileID: 7965445778685351348}
-  - component: {fileID: 4500837832629598727}
-  - component: {fileID: 3844578212304825222}
-  - component: {fileID: 3055113075549185078}
+  - component: {fileID: 1064886890577989848}
+  - component: {fileID: 1064886890577989849}
+  - component: {fileID: 1064886890577989850}
+  - component: {fileID: 1064886890577989851}
+  - component: {fileID: 1064886890577989860}
+  - component: {fileID: 1064886890577989861}
+  - component: {fileID: 1064886890577989862}
   m_Layer: 0
-  m_Name: AOERectangle
-  m_TagString: Untagged
+  m_Name: CicleTank
+  m_TagString: ControllableUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8268171039791249432
+--- !u!4 &1064886890577989848
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
+  m_GameObject: {fileID: 1064886890577989863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.591, z: -1.86}
-  m_LocalScale: {x: 1.5, y: 0.46243498, z: 1.5}
+  m_LocalPosition: {x: -4.88, y: 0.13, z: 20.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8268171039791249439
+--- !u!33 &1064886890577989849
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
+  m_GameObject: {fileID: 1064886890577989863}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8268171039791249438
+--- !u!23 &1064886890577989850
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
+  m_GameObject: {fileID: 1064886890577989863}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e6e048c3a2d8f944ca25da24b45694a7, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,26 +85,57 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8268171039791249437
+--- !u!65 &1064886890577989851
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
+  m_GameObject: {fileID: 1064886890577989863}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7965445778685351348
+--- !u!114 &1064886890577989860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
+  m_GameObject: {fileID: 1064886890577989863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072422c043c46834c8ea1f2e946e53d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitClass: {fileID: 11400000, guid: a0f67557f8f0c274dba039d3f0b2f358, type: 2}
+  CurrentState: 1
+  Speed: 50
+--- !u!54 &1064886890577989861
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064886890577989863}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1064886890577989862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064886890577989863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -175,189 +205,73 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: fa3eeee1-ee84-49e8-89ad-9be06244ab16
-    m_ActionName: UnitControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: UnitControls/Movement
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1064886890577989860}
+        m_TargetAssemblyTypeName: ControllableUnit, Assembly-CSharp
+        m_MethodName: BackToCursor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 892f65b6-3aff-4c8c-8599-ed33dfc11680
-    m_ActionName: UnitControls/DeselectUnit[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5de17b6b-53c8-42a2-a56d-962459a20261
-    m_ActionName: UnitControls/Wait[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ee2434eb-2f14-41a9-b0b5-352f81091bdc
-    m_ActionName: UnitControls/Attack[/Keyboard/f]
+    m_ActionName: UnitControls/Buttons
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 9fc65e45-c094-4dde-a56c-ee899449d4b7
     m_ActionName: AimControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5de17b6b-53c8-42a2-a56d-962459a20261
+    m_ActionName: UnitControls/Wait[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1064886890577989860}
+        m_TargetAssemblyTypeName: ControllableUnit, Assembly-CSharp
+        m_MethodName: Aiming
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ee2434eb-2f14-41a9-b0b5-352f81091bdc
+    m_ActionName: UnitControls/Attack[/Keyboard/f]
+  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 24d36252-4cfe-4081-a098-53c12cdffaa0
     m_ActionName: AimControls/RotateAOE[/Keyboard/q,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4500837832629598727}
-        m_TargetAssemblyTypeName: AOEMovement, Assembly-CSharp
-        m_MethodName: Fire
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: a8fb96db-dd14-4bbf-b6e9-63a6c2a9f877
     m_ActionName: AimControls/Fire[/Keyboard/f]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4500837832629598727}
-        m_TargetAssemblyTypeName: AOEMovement, Assembly-CSharp
-        m_MethodName: BackToUnit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: bb85640f-8551-4a7d-ad1a-2cef6dfa9f5e
     m_ActionName: AimControls/BackToUnit[/Keyboard/backspace]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: AimControls
+  m_DefaultActionMap: UnitControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4500837832629598727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96bb12f658c0fa04094137ee4948b44c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentState: 1
-  Speed: 10
-  explosion: {fileID: 5040728934535680121, guid: ea008b6a529fa1d4fbc1d6a0508d1bd7, type: 3}
-  DamageText: {fileID: 6024482449157247473, guid: 183d73ecd4695214ebb7afa40be2fe5c, type: 3}
---- !u!54 &3844578212304825222
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!82 &3055113075549185078
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8268171039791249436}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 15af9a7f6e66e734aa3e47a9af3cf890, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4

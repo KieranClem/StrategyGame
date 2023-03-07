@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1064886890577989861}
   - component: {fileID: 1064886890577989862}
   m_Layer: 0
-  m_Name: Unit1 (1)
+  m_Name: RegularTank
   m_TagString: ControllableUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

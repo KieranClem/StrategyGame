@@ -36,6 +36,7 @@ public class AOEMovement : MonoBehaviour
             Vector2 inputVector = playerInputActions.AimControls.Movement.ReadValue<Vector2>();
             Vector2 rotationVector = playerInputActions.AimControls.RotateAOE.ReadValue<Vector2>();
 
+            //pushes aoe back if they leave range
             if (dist > UnitAiming.UnitClass.UnitRange)
             {
                 rigidbody.AddForce(-rigidbody.velocity * (Speed * 10f));
@@ -46,6 +47,7 @@ public class AOEMovement : MonoBehaviour
                 rigidbody.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * Speed, ForceMode.Force);
             }
 
+            //rotate AOE
             if (rotationVector.x > 0 || rotationVector.x < 0)
             {
                 transform.Rotate(Vector3.up * rotationVector.x * 100f * Time.deltaTime);
@@ -112,9 +114,6 @@ public class AOEMovement : MonoBehaviour
                     if (unit == UnitAiming.gameObject)
                         Hitself = true;
 
-                    
-
-                    //unit.TakeDamage(UnitAiming.UnitClass.UnitAttack);
                     if (unit.CompareTag("ControllableUnit"))
                     {
                         unit.GetComponent<ControllableUnit>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
@@ -167,7 +166,6 @@ public class AOEMovement : MonoBehaviour
         {
             foreach (GameObject unit in UnitsInRange)
             {
-                //unit.TakeDamage(enemyInControl.EnemyClass.UnitAttack);
                 bool Hitself = false;
                 if (unit == enemyInControl.gameObject)
                     Hitself = true;

@@ -65,9 +65,15 @@ public class CursorControls : MonoBehaviour
             controllableUnit.ShowMovementRange();
         }
 
-        if(other.tag == "EnemyUnit")
+        if (other.tag == "EnemyUnit")
         {
             other.GetComponent<EnemyUnitAI>().ShowMovementRange();
+        }
+
+        if (other.tag == "InvisableWalls")
+        {
+            rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
+            rigidbody.velocity = Vector3.zero;
         }
     }
 

@@ -38,22 +38,14 @@ public class ControllableUnit : MonoBehaviour
         UnitHealth = UnitClass.UnitMaxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (CurrentState == State.BeingControlled)
-        {
-            //Movement
-        }
-    }
-
     private void FixedUpdate()
     {
         if (CurrentState == State.BeingControlled)
         {
             float dist = Vector3.Distance(startpos, transform.position);
-
             Vector2 inputVector = playerInputActions.UnitControls.Movement.ReadValue<Vector2>();
+
+            //pushes unit back if it's moved past it's movement range
             if (dist > UnitClass.UnitMovement)
             {
                 rigidbody.AddForce(-rigidbody.velocity * Speed);
@@ -64,12 +56,13 @@ public class ControllableUnit : MonoBehaviour
                 rigidbody.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * Speed, ForceMode.Force);
             }
 
-
+            //max speed for unit moving around
             if (rigidbody.velocity.magnitude > Speed)
             {
                 rigidbody.velocity = rigidbody.velocity.normalized * Speed;
             }
 
+            //stops unit from moving forward more when out of unit range
             if (dist > UnitClass.UnitMovement)
             {
                 rigidbody.velocity = Vector3.zero;
@@ -131,8 +124,9 @@ public class ControllableUnit : MonoBehaviour
             CurrentState = State.NotBeingControlled;
             rigidbody.velocity = Vector3.zero;
             playerInputActions.UnitControls.Disable();
+            aoe.transform.localScale = new Vector3(UnitClass.AOESize * 2, aoe.transform.localScale.y, UnitClass.AOESize * 2);
             aoe.GetComponent<AOEMovement>().SwitchToAOE(GetComponent<ControllableUnit>());
-            
+
         }
     }
 
@@ -172,6 +166,15 @@ public class ControllableUnit : MonoBehaviour
     {
         startpos = this.transform.position;
         CurrentState = State.NotBeingControlled;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "InvisableWalls")
+        {
+            rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
+            rigidbody.velocity = Vector3.zero;
+        }
     }
 
     public void TakeDamage(float DamageDelt, bool hitBySelf)

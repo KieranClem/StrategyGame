@@ -21,6 +21,7 @@ public class Unit : ScriptableObject
     public float UnitDefense;
     public float UnitEvasiveness;
     public float UnitRange;
+    public float AOESize;
     public GameObject AOE;
     public GameObject MovementCircle;
 

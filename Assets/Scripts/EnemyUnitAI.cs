@@ -93,7 +93,7 @@ public class EnemyUnitAI : MonoBehaviour
 
         startpos = this.transform.position;
         Target = clostestPlayerUnit;
-        //The second waiting is here solely to give the effect of the enemy thinking about what to do
+        //The seconds waiting is here solely to give the effect of the enemy thinking about what to do
         yield return new WaitForSeconds(0.8f);
         nav.SetDestination(Target.position);
         nav.isStopped = false;

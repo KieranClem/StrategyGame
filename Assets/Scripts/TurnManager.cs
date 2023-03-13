@@ -28,7 +28,12 @@ public class TurnManager : MonoBehaviour
             PlayerUnits.Add(PUnits);
         }
 
-        foreach(GameObject EUnits in GameObject.FindGameObjectsWithTag("EnemyUnit"))
+        foreach (GameObject PUnits in GameObject.FindGameObjectsWithTag("ControllableHealer"))
+        {
+            PlayerUnits.Add(PUnits);
+        }
+
+        foreach (GameObject EUnits in GameObject.FindGameObjectsWithTag("EnemyUnit"))
         {
             EnemyUnits.Add(EUnits);
         }

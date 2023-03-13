@@ -196,6 +196,11 @@ public class ControllableUnit : MonoBehaviour
         }
     }
 
+    public void HealDamage(float DamageHeal)
+    {
+        UnitHealth = UnitClass.Heal(DamageHeal, UnitHealth);
+    }
+
     private void DestroySelf()
     {
         turnManager.RemoveControllableUnit(this);

@@ -441,6 +441,7 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   SpawnedRangeIndicator: {fileID: 0}
   UnitHealth: 0
+  heal: {fileID: 11400000, guid: 79f8eca16a61cbe43b1a8fedabeb22f3, type: 2}
 --- !u!1001 &393858081
 PrefabInstance:
   m_ObjectHideFlags: 0

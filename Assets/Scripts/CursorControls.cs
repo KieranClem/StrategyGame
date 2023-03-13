@@ -75,6 +75,12 @@ public class CursorControls : MonoBehaviour
             rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
             rigidbody.velocity = Vector3.zero;
         }
+
+        if(other.tag == "ControllableHealer")
+        {
+            controllableUnit = other.GetComponent<ControllableHealers>();
+            controllableUnit.ShowMovementRange();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -88,6 +94,12 @@ public class CursorControls : MonoBehaviour
         if (other.tag == "EnemyUnit")
         {
             other.GetComponent<EnemyUnitAI>().StopShowingMovementRange();
+        }
+
+        if (other.tag == "ControllableHealer")
+        {
+            controllableUnit.StopShowingMovementRange();
+            controllableUnit = null;
         }
     }
 

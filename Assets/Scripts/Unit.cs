@@ -36,12 +36,14 @@ public class Unit : ScriptableObject
         return UnitCurrentHealth;
     }
 
-    public void Heal(float HealAmount)
+    public float Heal(float HealAmount, float UnitCurrentHealth)
     {
-        UnitHealth += HealAmount;
+        UnitCurrentHealth += HealAmount;
         if(UnitHealth > UnitMaxHealth)
         {
             UnitHealth = UnitMaxHealth;
         }
+
+        return UnitCurrentHealth;
     }
 }

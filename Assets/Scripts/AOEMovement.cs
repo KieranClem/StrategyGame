@@ -81,6 +81,11 @@ public class AOEMovement : MonoBehaviour
         {
             UnitsInRange.Add(other.gameObject);
         }
+
+        if(other.tag == "ControllableHealer")
+        {
+            UnitsInRange.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -91,6 +96,11 @@ public class AOEMovement : MonoBehaviour
         }
 
         if (other.tag == "EnemyUnit")
+        {
+            UnitsInRange.Remove(other.gameObject);
+        }
+
+        if (other.tag == "ControllableHealer")
         {
             UnitsInRange.Remove(other.gameObject);
         }
@@ -106,28 +116,55 @@ public class AOEMovement : MonoBehaviour
     {
         if (context.performed && CurrentState == State.BeingControlled)
         {
-            if (UnitsInRange.Count > 0)
+            if (!UnitAiming.gameObject.CompareTag("ControllableHealer"))
             {
-                foreach (GameObject unit in UnitsInRange)
+                if (UnitsInRange.Count > 0)
                 {
-                    bool Hitself = false;
-                    if (unit == UnitAiming.gameObject)
-                        Hitself = true;
-
-                    if (unit.CompareTag("ControllableUnit"))
+                    foreach (GameObject unit in UnitsInRange)
                     {
-                        unit.GetComponent<ControllableUnit>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
-                    }
-                    else if(unit.CompareTag("EnemyUnit"))
-                    {
-                        unit.GetComponent<EnemyUnitAI>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
+                        bool Hitself = false;
+                        if (unit == UnitAiming.gameObject)
+                            Hitself = true;
+
+                        if (unit.CompareTag("ControllableUnit") || unit.CompareTag("ControllableHealer"))
+                        {
+                            unit.GetComponent<ControllableUnit>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
+                        }
+                        else if (unit.CompareTag("EnemyUnit"))
+                        {
+                            unit.GetComponent<EnemyUnitAI>().TakeDamage(UnitAiming.UnitClass.UnitAttack, Hitself);
+                        }
+
+                        Vector3 PopUpSpawnPoint = new Vector3(unit.transform.position.x, unit.transform.position.y + 2, unit.transform.position.z);
+                        GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
+                        TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
                     }
 
-                    Vector3 PopUpSpawnPoint = new Vector3( unit.transform.position.x, unit.transform.position.y + 2, unit.transform.position.z);
-                    GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
-                    TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
+                    StartCoroutine(ExitAOE(true));
                 }
+            }
+            else
+            {
+                if (UnitsInRange.Count > 0)
+                {
+                    UnitHealers healer = UnitAiming.GetComponent<ControllableHealers>().heal;
+                    
+                    foreach (GameObject unit in UnitsInRange)
+                    {
+                        if (unit.CompareTag("ControllableUnit") || unit.CompareTag("ControllableHealer"))
+                        {
+                            unit.GetComponent<ControllableUnit>().HealDamage(healer.HealAmount);
+                        }
+                        else if (unit.CompareTag("EnemyUnit"))
+                        {
+                            unit.GetComponent<EnemyUnitAI>().HealDamage(healer.HealAmount);
+                        }
 
+                        Vector3 PopUpSpawnPoint = new Vector3(unit.transform.position.x, unit.transform.position.y + 2, unit.transform.position.z);
+                        GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
+                        TextPop.GetComponent<DamagePopUp>().SetUp(healer.HealAmount);
+                    }
+                }
                 StartCoroutine(ExitAOE(true));
             }
         }
@@ -170,7 +207,7 @@ public class AOEMovement : MonoBehaviour
                 if (unit == enemyInControl.gameObject)
                     Hitself = true;
 
-                if (unit.CompareTag("ControllableUnit"))
+                if (unit.CompareTag("ControllableUnit") || unit.CompareTag("ControllableHealer"))
                 {
                     unit.GetComponent<ControllableUnit>().TakeDamage(enemyInControl.EnemyClass.UnitAttack, Hitself);
                 }

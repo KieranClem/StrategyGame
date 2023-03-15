@@ -125,6 +125,10 @@ public class EnemyUnitAI : MonoBehaviour
         }
     }
 
+    public void HealDamage(float DamageHeal)
+    {
+        EnemyHealth = EnemyClass.Heal(DamageHeal, EnemyHealth);
+    }
 
     public void ShowMovementRange()
     {

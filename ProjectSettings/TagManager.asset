@@ -9,6 +9,7 @@ TagManager:
   - EnemyUnit
   - GameManager
   - InvisableWalls
+  - ControllableHealer
   layers:
   - Default
   - TransparentFX

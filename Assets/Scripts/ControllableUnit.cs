@@ -14,14 +14,14 @@ public class ControllableUnit : MonoBehaviour
 {
     public Unit UnitClass;
     [HideInInspector] public State CurrentState = State.NotBeingControlled;
-    private Rigidbody rigidbody;
-    private PlayerInputActions playerInputActions;
+    [HideInInspector] public Rigidbody rigidbody;
+    [HideInInspector] public PlayerInputActions playerInputActions;
     public float Speed = 10f;
-    private Vector3 startpos;
-    private GameObject Cursor;
-    private TurnManager turnManager;
-    private GameObject SpawnedRangeIndicator;
-    private float UnitHealth;
+    [HideInInspector] public Vector3 startpos;
+    [HideInInspector] public GameObject Cursor;
+    [HideInInspector] public TurnManager turnManager;
+    [HideInInspector] public GameObject SpawnedRangeIndicator;
+    [HideInInspector] public float UnitHealth;
   
 
 
@@ -149,7 +149,7 @@ public class ControllableUnit : MonoBehaviour
               
     }
 
-    private void ReturnCursorControls()
+    public void ReturnCursorControls()
     {
         if (CurrentState != State.Waiting)
         {
@@ -194,6 +194,11 @@ public class ControllableUnit : MonoBehaviour
             }
 
         }
+    }
+
+    public void HealDamage(float DamageHeal)
+    {
+        UnitHealth = UnitClass.Heal(DamageHeal, UnitHealth);
     }
 
     private void DestroySelf()

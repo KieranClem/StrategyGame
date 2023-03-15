@@ -54,6 +54,7 @@ public class ControllableUnit : MonoBehaviour
             else
             {
                 rigidbody.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * Speed, ForceMode.Force);
+                
             }
 
             //max speed for unit moving around
@@ -72,6 +73,13 @@ public class ControllableUnit : MonoBehaviour
             {
                 rigidbody.velocity = Vector3.zero;
             }
+            else
+            {
+                transform.forward = new Vector3(inputVector.x, 0, inputVector.y);
+            }
+
+
+
         }
     }
 

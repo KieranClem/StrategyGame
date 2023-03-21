@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251154a5ae091cc478145a2fbbe0c3b1, type: 3}
+  m_Name: TriangleHealer
+  m_EditorClassIdentifier: 
+  UnitName: TriangleHealer
+  UnitMaxHealth: 10
+  UnitHealth: 10
+  UnitMovement: 6
+  UnitAttack: 5
+  UnitDefense: 5
+  UnitEvasiveness: 5
+  UnitRange: 5
+  AOESize: 1
+  AOE: {fileID: 3908849676760434727, guid: 6770aad491abbec408131c2c8053e425, type: 3}
+  MovementCircle: {fileID: 6068441207763848713, guid: b37aebad8f4eba3419be793754577193, type: 3}
+  HealAmount: 5

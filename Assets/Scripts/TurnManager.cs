@@ -19,6 +19,7 @@ public class TurnManager : MonoBehaviour
     private CurrentTurn turn = CurrentTurn.PlayerTurn;
     private Transform cursorLocation;
     private Transform currentlyMovingEnemy;
+    private LevelLoader levelLoader;
     
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class TurnManager : MonoBehaviour
         WaitingEnemyUnits = 0;
         cursorLocation = GameObject.FindGameObjectWithTag("Cursor").transform;
         turn = CurrentTurn.PlayerTurn;
+        levelLoader = GetComponent<LevelLoader>();
     }
 
     private void FixedUpdate()
@@ -119,7 +121,7 @@ public class TurnManager : MonoBehaviour
         EnemyUnits.Remove(enemyUnitAI.gameObject);
         if(EnemyUnits.Count <= 0)
         {
-            //Win condition goes here
+            levelLoader.LoadEndScene();
         }
     }
 

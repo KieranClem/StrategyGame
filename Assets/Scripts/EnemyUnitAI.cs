@@ -80,7 +80,7 @@ public class EnemyUnitAI : MonoBehaviour
         float Distance = 0f;
         for(int i = 0; i < colliders.Length; i++)
         {
-            if(colliders[i].tag == "ControllableUnit")
+            if(colliders[i].tag == "ControllableUnit" || colliders[i].tag == "ControllableHealer")
             {
                 float tempDist = Vector3.Distance(transform.position, colliders[i].transform.position);
                 if(clostestPlayerUnit == null || tempDist < Distance)

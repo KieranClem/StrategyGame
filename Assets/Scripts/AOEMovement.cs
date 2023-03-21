@@ -140,7 +140,7 @@ public class AOEMovement : MonoBehaviour
                         TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
                     }
 
-                    StartCoroutine(ExitAOE(true));
+                    StartCoroutine(ExplodeToEndOfTurn());
                 }
             }
             else
@@ -164,8 +164,9 @@ public class AOEMovement : MonoBehaviour
                         GameObject TextPop = Instantiate(DamageText, PopUpSpawnPoint, Quaternion.identity);
                         TextPop.GetComponent<DamagePopUp>().SetUp(healer.HealAmount);
                     }
-                }
-                StartCoroutine(ExitAOE(true));
+
+                    StartCoroutine(ExplodeToEndOfTurn());
+                } 
             }
         }
         
@@ -179,13 +180,19 @@ public class AOEMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator ExplodeToEndOfTurn()
+    {
+        Instantiate(explosion, this.transform.position, Quaternion.identity);
+        audioSource.Play();
+        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
+
+        ExitAOE(true);
+    }
+
     private IEnumerator ExitAOE(bool TurnEnded)
     {
         CurrentState = State.NotBeingControlled;
         playerInputActions.AimControls.Disable();
-        Instantiate(explosion, this.transform.position, Quaternion.identity);
-        audioSource.Play();
-        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
         StartCoroutine(UnitAiming.ReturnUnitControl(TurnEnded));
         yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);

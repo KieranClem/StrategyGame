@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 342287814064384406}
   - component: {fileID: 342287814064384409}
   - component: {fileID: 342287814064384408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TriangleTank
   m_TagString: ControllableUnit
   m_Icon: {fileID: 0}

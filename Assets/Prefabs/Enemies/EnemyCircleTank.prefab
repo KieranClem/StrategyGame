@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8085623857238388899}
   - component: {fileID: 5405491597859841935}
   - component: {fileID: 2132229264417760651}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyCircleTank
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}

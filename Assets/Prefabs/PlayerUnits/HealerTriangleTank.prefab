@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5313793704603440210}
   - component: {fileID: 2341847854471007505}
   - component: {fileID: 8204504030619672671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealerTriangleTank
   m_TagString: ControllableHealer
   m_Icon: {fileID: 0}

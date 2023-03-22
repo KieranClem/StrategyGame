@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9123341564474193476}
   - component: {fileID: 5620729846428297468}
   - component: {fileID: 7510599464309743998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyTriangleTank
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}

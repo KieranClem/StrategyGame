@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1309934933845899724}
   - component: {fileID: 1309934933845899725}
   - component: {fileID: 1309934933845899726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TankSquare
   m_TagString: ControllableUnit
   m_Icon: {fileID: 0}

@@ -184,15 +184,14 @@ public class AOEMovement : MonoBehaviour
     {
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         audioSource.Play();
+        CurrentState = State.NotBeingControlled;
+        playerInputActions.AimControls.Disable();
         yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
-
-        ExitAOE(true);
+        StartCoroutine(ExitAOE(true));
     }
 
     private IEnumerator ExitAOE(bool TurnEnded)
     {
-        CurrentState = State.NotBeingControlled;
-        playerInputActions.AimControls.Disable();
         StartCoroutine(UnitAiming.ReturnUnitControl(TurnEnded));
         yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);

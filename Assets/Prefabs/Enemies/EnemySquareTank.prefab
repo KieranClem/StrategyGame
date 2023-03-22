@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3337279283032269921}
   - component: {fileID: 3337279283032269934}
   - component: {fileID: 3337279283032269935}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemySquareTank
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}

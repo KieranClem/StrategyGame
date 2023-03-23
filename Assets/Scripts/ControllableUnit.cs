@@ -22,8 +22,8 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector] public TurnManager turnManager;
     [HideInInspector] public GameObject SpawnedRangeIndicator;
     [HideInInspector] public float UnitHealth;
-  
 
+    public bool DestroySelfAtStart = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class ControllableUnit : MonoBehaviour
         startpos = this.transform.position;
         playerInputActions = new PlayerInputActions();
         rigidbody = GetComponent<Rigidbody>();
-        playerInputActions.UnitControls.Disable();
+        playerInputActions.UnitControls.Enable();
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
         UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
@@ -88,7 +88,6 @@ public class ControllableUnit : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInputActions.UnitControls.Enable();
-
     }
 
     public void ShowMovementRange()
@@ -119,7 +118,6 @@ public class ControllableUnit : MonoBehaviour
     {
         if (context.performed && CurrentState == State.BeingControlled)
         {
-            
             StartCoroutine(ReturnUnitControl(true));
         }
     }
@@ -131,7 +129,7 @@ public class ControllableUnit : MonoBehaviour
             GameObject aoe = Instantiate(UnitClass.AOE, this.transform.position, Quaternion.identity);
             CurrentState = State.NotBeingControlled;
             rigidbody.velocity = Vector3.zero;
-            playerInputActions.UnitControls.Disable();
+            //playerInputActions.UnitControls.Disable();
             aoe.transform.localScale = new Vector3(UnitClass.AOESize * 2, aoe.transform.localScale.y, UnitClass.AOESize * 2);
             aoe.GetComponent<AOEMovement>().SwitchToAOE(GetComponent<ControllableUnit>());
 
@@ -150,7 +148,7 @@ public class ControllableUnit : MonoBehaviour
         else
         {
             CurrentState = State.Waiting;
-            playerInputActions.UnitControls.Disable();
+            //playerInputActions.UnitControls.Disable();
             turnManager.AddWaitingPlayerUnit();
             ReturnCursorControls();
         }
@@ -166,7 +164,7 @@ public class ControllableUnit : MonoBehaviour
             transform.position = startpos;
         }
         StopShowingMovementRange();
-        playerInputActions.UnitControls.Disable();
+        //playerInputActions.UnitControls.Disable();
         StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
     }
 
@@ -209,13 +207,14 @@ public class ControllableUnit : MonoBehaviour
         UnitHealth = UnitClass.Heal(DamageHeal, UnitHealth);
     }
 
-    private void DestroySelf()
+    public void DestroySelf()
     {
         turnManager.RemoveControllableUnit(this);
         if(CurrentState == State.Waiting)
         {
             turnManager.CheckIfDestoryedUnitIsPartOfTurn(this.gameObject);
         }
+        
         Destroy(gameObject);
     }
 }

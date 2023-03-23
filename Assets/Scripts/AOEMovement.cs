@@ -147,6 +147,8 @@ public class AOEMovement : MonoBehaviour
             {
                 if (UnitsInRange.Count > 0)
                 {
+                    
+                    
                     UnitHealers healer = UnitAiming.GetComponent<ControllableHealers>().heal;
                     
                     foreach (GameObject unit in UnitsInRange)
@@ -182,11 +184,12 @@ public class AOEMovement : MonoBehaviour
 
     private IEnumerator ExplodeToEndOfTurn()
     {
-        Instantiate(explosion, this.transform.position, Quaternion.identity);
+        GameObject temp = Instantiate(explosion, this.transform.position, Quaternion.identity);
         audioSource.Play();
         CurrentState = State.NotBeingControlled;
         playerInputActions.AimControls.Disable();
         yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
+        Destroy(temp);
         StartCoroutine(ExitAOE(true));
     }
 

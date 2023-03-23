@@ -111,7 +111,7 @@ public class CursorControls : MonoBehaviour
             if(controllableUnit && (state == State.BeingControlled) && (controllableUnit.CurrentState != State.Waiting))
             {
                 state = State.NotBeingControlled;
-                playerInputActions.CursorControls.Disable();
+                //playerInputActions.CursorControls.Disable();
                 CurrentlyControlledUnit = controllableUnit.gameObject;
                 StartCoroutine(controllableUnit.SwitchToCurrentUnit());
             }

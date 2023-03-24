@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CursorControls : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class CursorControls : MonoBehaviour
     private ControllableUnit controllableUnit;
     private TurnManager turnManager;
 
+    //UI elements 
+    private Text DisplayHP;
+    private Text DisplayAttack;
+    
+
     void Start()
     {
         state = State.BeingControlled;
@@ -24,6 +30,11 @@ public class CursorControls : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         playerInputActions.CursorControls.Enable();
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
+
+        DisplayHP = GameObject.FindGameObjectWithTag("HPTextbox").GetComponent<Text>();
+        DisplayAttack = GameObject.FindGameObjectWithTag("AttackTextBox").GetComponent<Text>();
+
+        HideUI();
     }
 
     private void Update()
@@ -59,48 +70,80 @@ public class CursorControls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "ControllableUnit")
+        switch(other.tag)
         {
-            controllableUnit = other.GetComponent<ControllableUnit>();
-            controllableUnit.ShowMovementRange();
-        }
-
-        if (other.tag == "EnemyUnit")
-        {
-            other.GetComponent<EnemyUnitAI>().ShowMovementRange();
-        }
-
-        if (other.tag == "InvisableWalls")
-        {
-            rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
-            rigidbody.velocity = Vector3.zero;
-        }
-
-        if(other.tag == "ControllableHealer")
-        {
-            controllableUnit = other.GetComponent<ControllableHealers>();
-            controllableUnit.ShowMovementRange();
+            case "ControllableUnit":
+                controllableUnit = other.GetComponent<ControllableUnit>();
+                controllableUnit.ShowMovementRange();
+                ShowUI(other.gameObject);
+                break;
+            case "EnemyUnit":
+                other.GetComponent<EnemyUnitAI>().ShowMovementRange();
+                ShowUI(other.gameObject);
+                break;
+            case "InvisableWalls":
+                rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
+                rigidbody.velocity = Vector3.zero;
+                break;
+            case "ControllableHealer":
+                controllableUnit = other.GetComponent<ControllableHealers>();
+                controllableUnit.ShowMovementRange();
+                ShowUI(other.gameObject);
+                break;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "ControllableUnit")
+        switch (other.tag)
         {
-            controllableUnit.StopShowingMovementRange();
-            controllableUnit = null;
+            case "ControllableUnit":
+                controllableUnit.StopShowingMovementRange();
+                controllableUnit = null;
+                HideUI();
+                break;
+            case "EnemyUnit":
+                other.GetComponent<EnemyUnitAI>().StopShowingMovementRange();
+                HideUI();
+                break;
+            case "ControllableHealer":
+                controllableUnit.StopShowingMovementRange();
+                controllableUnit = null;
+                HideUI();
+                break;
+        }
+    }
+
+    private void ShowUI(GameObject UnitToShow)
+    {
+        DisplayAttack.gameObject.SetActive(true);
+        DisplayHP.gameObject.SetActive(true);
+        if (controllableUnit)
+        {
+            if (controllableUnit.tag == "ControllableUnit")
+            {
+                DisplayHP.text = "HP: " + controllableUnit.UnitHealth;
+                DisplayAttack.text = "Attack: " + controllableUnit.UnitClass.UnitAttack;
+            }
+            else
+            {
+                DisplayHP.text = "HP: " + controllableUnit.UnitHealth;
+                DisplayAttack.text = "Heal Amount: " + controllableUnit.GetComponent<ControllableHealers>().heal.HealAmount;
+            }
+        }
+        else
+        {
+            EnemyUnitAI enemyUnit = UnitToShow.GetComponent<EnemyUnitAI>();
+            DisplayHP.text = "HP: " + enemyUnit.EnemyHealth;
+            DisplayAttack.text = "Attack: " + enemyUnit.EnemyClass.UnitAttack;
         }
 
-        if (other.tag == "EnemyUnit")
-        {
-            other.GetComponent<EnemyUnitAI>().StopShowingMovementRange();
-        }
+    }
 
-        if (other.tag == "ControllableHealer")
-        {
-            controllableUnit.StopShowingMovementRange();
-            controllableUnit = null;
-        }
+    private void HideUI()
+    {
+        DisplayAttack.gameObject.SetActive(false);
+        DisplayHP.gameObject.SetActive(false);
     }
 
     public void TakeControlOfUnit(InputAction.CallbackContext context)
@@ -113,7 +156,9 @@ public class CursorControls : MonoBehaviour
                 state = State.NotBeingControlled;
                 //playerInputActions.CursorControls.Disable();
                 CurrentlyControlledUnit = controllableUnit.gameObject;
+                HideUI();
                 StartCoroutine(controllableUnit.SwitchToCurrentUnit());
+                GetComponent<AudioSource>().Play();
             }
         }
         

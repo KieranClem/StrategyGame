@@ -10,6 +10,8 @@ TagManager:
   - GameManager
   - InvisableWalls
   - ControllableHealer
+  - HPTextbox
+  - AttackTextBox
   layers:
   - Default
   - TransparentFX

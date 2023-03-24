@@ -11,7 +11,7 @@ public class EnemyUnitAI : MonoBehaviour
     //The speed in which the unit moves around the arena, not it's anything considering in regards to combat of how far the enemy can move
     public float UnitSpeed = 5f;
     public float AOESpeed = 5f;
-    private float EnemyHealth;
+    public float EnemyHealth;
     //Navigation variables
     private Transform Target = null;
     private NavMeshAgent nav;

@@ -359,11 +359,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53919378}
   m_CullTransparentMesh: 1
---- !u!4 &77040485 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-  m_PrefabInstance: {fileID: 1070284443}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119414236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6849631899881181580, guid: 5b62c24eae34eb34394a83bad508b362, type: 3}
@@ -1462,39 +1457,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7bd78deed4d29d48be40d75d9a87490, type: 3}
---- !u!1 &523767603
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 523767604}
-  m_Layer: 0
-  m_Name: Tanks to destory because of a glitch I can not figure out
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &523767604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523767603}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.451847, y: 20.274654, z: -25.324463}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 710720327}
-  - {fileID: 77040485}
-  - {fileID: 1226676262}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &550617848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2318,11 +2280,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &710720327 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-  m_PrefabInstance: {fileID: 1497396865}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &773348704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3133,67 +3090,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b62c24eae34eb34394a83bad508b362, type: 3}
---- !u!1001 &1070284443
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 523767604}
-    m_Modifications:
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.188633
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.09506
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -29.26738
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6394486252287313976, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033043109636994252, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: DestroySelfAtStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8033043109636994254, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
-      propertyPath: m_Name
-      value: HealerTankSquare (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 64626b9003e14db4b93d2d78e8bbc2a0, type: 3}
 --- !u!4 &1075966574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599690990278927062, guid: c8dc25c376d9e2f4f90202b8bb2e7953, type: 3}
@@ -3668,11 +3564,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7901177618723377360, guid: e585f5c519178114f8e08ef7b7e71787, type: 3}
   m_PrefabInstance: {fileID: 1222225644}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1226676262 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-  m_PrefabInstance: {fileID: 1924604962}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1243386352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4139,67 +4030,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4950731523987288976, guid: cfc63f30dc6175743b74a5200412a3e6, type: 3}
   m_PrefabInstance: {fileID: 1434433738}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1497396865
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 523767604}
-    m_Modifications:
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.7109585
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 37.954483
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -29.824825
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4616626359314703137, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8674200837551328064, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: m_Name
-      value: HealerTankCircle (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8674200837551328066, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
-      propertyPath: DestroySelfAtStart
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 97b709d69150be44eb7e97543b9444c6, type: 3}
 --- !u!1001 &1503376876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6035,67 +5865,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 359720810467299218, guid: a4db3b381f750aa4bb2dbba675948820, type: 3}
   m_PrefabInstance: {fileID: 1889026099}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1924604962
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 523767604}
-    m_Modifications:
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.00317651
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804694887671778721, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341847854471007505, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: DestroySelfAtStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2948140829174819589, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
-      propertyPath: m_Name
-      value: HealerTriangleTank
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dcd0ce52af388bb45b785922f29ca3aa, type: 3}
 --- !u!4 &1935502560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3328217234786519102, guid: e7bd78deed4d29d48be40d75d9a87490, type: 3}

@@ -21,6 +21,6 @@ MonoBehaviour:
   UnitEvasiveness: 5
   UnitRange: 5
   AOESize: 1
-  AOE: {fileID: 2933946829876633730, guid: 328d68fe4edc5fb40931788dba718714, type: 3}
+  AOE: {fileID: 2933946829876633730, guid: def5e0f5574eb96489ab7dd8325f9f3a, type: 3}
   MovementCircle: {fileID: 6068441207763848713, guid: b37aebad8f4eba3419be793754577193, type: 3}
   HealAmount: 5

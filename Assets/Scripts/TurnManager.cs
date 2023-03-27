@@ -89,6 +89,7 @@ public class TurnManager : MonoBehaviour
 
             }
             cursorLocation.GetComponent<CursorControls>().state = State.BeingControlled;
+            cursorLocation.position = PlayerUnits[0].transform.position;
         }
     }
 

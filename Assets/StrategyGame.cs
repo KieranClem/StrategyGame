@@ -764,7 +764,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""97114bf2-ec61-4d9f-b6db-aaa728ade61f"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/backspace"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -774,7 +774,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""33a51c20-ab22-4a98-af6a-de313c57448f"",
+                    ""id"": ""3584725c-ce6c-4922-a935-d411f2017680"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -796,7 +796,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c04591cd-4dfb-4d11-95a9-7cf05db4a7cb"",
+                    ""id"": ""4c68d774-b129-4cd3-abfb-283889e0dc8d"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -818,7 +818,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3e449e9a-468b-4f30-a290-dc1e1c43524a"",
+                    ""id"": ""7424251c-0889-4cfa-8246-7ca17384590b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -1016,7 +1016,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""49c85f73-380c-4114-8c2e-ccb9c48a6992"",
+                    ""id"": ""9f0b403f-13de-4c5e-ac4d-ca62a0eb98c6"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -1038,7 +1038,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""001856b4-f448-42b1-9119-bffc1af3933d"",
+                    ""id"": ""a168b6fb-0f63-44b7-9de3-a413256906c3"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",

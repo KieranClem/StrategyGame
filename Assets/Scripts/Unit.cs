@@ -39,7 +39,7 @@ public class Unit : ScriptableObject
     public float Heal(float HealAmount, float UnitCurrentHealth)
     {
         UnitCurrentHealth += HealAmount;
-        if(UnitHealth > UnitMaxHealth)
+        if(UnitCurrentHealth > UnitMaxHealth)
         {
             UnitHealth = UnitMaxHealth;
         }

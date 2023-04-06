@@ -98,7 +98,7 @@ public class CursorControls : MonoBehaviour
         switch (other.tag)
         {
             case "ControllableUnit":
-                controllableUnit.StopShowingMovementRange();
+                other.GetComponent<ControllableUnit>().StopShowingMovementRange();
                 controllableUnit = null;
                 HideUI();
                 break;
@@ -107,7 +107,7 @@ public class CursorControls : MonoBehaviour
                 HideUI();
                 break;
             case "ControllableHealer":
-                controllableUnit.StopShowingMovementRange();
+                other.GetComponent<ControllableHealers>().StopShowingMovementRange();
                 controllableUnit = null;
                 HideUI();
                 break;

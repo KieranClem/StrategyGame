@@ -10,6 +10,11 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("MainLevel");
     }
 
+    public void LoadSecondLevel()
+    {
+        SceneManager.LoadScene("SecondLevel");
+    }
+
     public void LoadEndScene()
     {
         SceneManager.LoadScene("EndScene");
@@ -17,7 +22,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadGameOver()
     {
-
+        SceneManager.LoadScene("GameOver");
     }
 
     public void ExitGame()

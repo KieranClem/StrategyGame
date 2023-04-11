@@ -19,6 +19,8 @@ public class ControllableHealers : ControllableUnit
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
         UnitHealth = UnitClass.UnitMaxHealth;
 
+        meshRenderer = GetComponent<MeshRenderer>();
+        materials = meshRenderer.materials;
 
         if (DestroySelfAtStart)
         {

@@ -15,7 +15,7 @@ MonoBehaviour:
   UnitName: TriangleTank
   UnitMaxHealth: 10
   UnitHealth: 10
-  UnitMovement: 6
+  UnitMovement: 15
   UnitAttack: 5
   UnitDefense: 5
   UnitEvasiveness: 5

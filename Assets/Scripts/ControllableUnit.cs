@@ -23,6 +23,10 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector] public GameObject SpawnedRangeIndicator;
     [HideInInspector] public float UnitHealth;
 
+    public Material EndTurnMaterial;
+    [HideInInspector]public MeshRenderer meshRenderer;
+    [HideInInspector]public Material[] materials;
+
     public bool DestroySelfAtStart = false;
 
     // Start is called before the first frame update
@@ -36,6 +40,9 @@ public class ControllableUnit : MonoBehaviour
         UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
         UnitHealth = UnitClass.UnitMaxHealth;
+
+        meshRenderer = GetComponent<MeshRenderer>();
+        materials = meshRenderer.materials;
     }
 
     private void FixedUpdate()
@@ -150,6 +157,16 @@ public class ControllableUnit : MonoBehaviour
             CurrentState = State.Waiting;
             //playerInputActions.UnitControls.Disable();
             turnManager.AddWaitingPlayerUnit();
+
+            //change materials for inactive state
+            Material[] OldMaterials = meshRenderer.materials;
+            for (int i = 0; i < OldMaterials.Length; i++)
+            {
+                OldMaterials[i] = EndTurnMaterial;
+            }
+
+            meshRenderer.materials = OldMaterials;
+
             ReturnCursorControls();
         }
               
@@ -172,6 +189,15 @@ public class ControllableUnit : MonoBehaviour
     {
         startpos = this.transform.position;
         CurrentState = State.NotBeingControlled;
+
+        //set materials back to active state
+        Material[] resetMaterials = meshRenderer.materials;
+        for(int i = 0; i < resetMaterials.Length; i++)
+        {
+            resetMaterials[i] = materials[i];
+        }
+
+        meshRenderer.materials = resetMaterials;
     }
 
     private void OnTriggerEnter(Collider other)

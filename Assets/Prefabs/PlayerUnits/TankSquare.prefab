@@ -125,6 +125,8 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   SpawnedRangeIndicator: {fileID: 0}
   UnitHealth: 0
+  EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
+  DestroySelfAtStart: 0
 --- !u!54 &1309934933845899725
 Rigidbody:
   m_ObjectHideFlags: 0

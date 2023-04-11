@@ -140,6 +140,8 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   SpawnedRangeIndicator: {fileID: 0}
   UnitHealth: 0
+  EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
+  DestroySelfAtStart: 0
   heal: {fileID: 11400000, guid: e53474c673ee8454b8a8642594aad01e, type: 2}
 --- !u!114 &8204504030619672671
 MonoBehaviour:

@@ -15,7 +15,7 @@ MonoBehaviour:
   UnitName: SquareHealer
   UnitMaxHealth: 5
   UnitHealth: 5
-  UnitMovement: 5
+  UnitMovement: 10
   UnitAttack: 0
   UnitDefense: 5
   UnitEvasiveness: 5

@@ -602,7 +602,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -620,7 +620,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0b75efea-39f5-42bb-9581-17a1091d4ef4",
+                    "id": "9a228ef7-23cb-46ab-9741-6a35b1205926",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",

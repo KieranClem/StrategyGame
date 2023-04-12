@@ -17,12 +17,14 @@ public class AOEMovement : MonoBehaviour
     public GameObject explosion;
     public GameObject smoke;
     public GameObject DamageText;
+    private PlayerInput playerInput;
 
     // Start is called before the first frame update
     void Start()
     {
         startpos = this.transform.position;
-        playerInputActions = new PlayerInputActions();
+        playerInputActions = CursorControls.playerInputActions;
+        //playerInput = CursorControls.PlayerInput;
         playerInputActions.AimControls.Enable();
         rigidbody = GetComponent<Rigidbody>();
         audioSource = this.GetComponent<AudioSource>();

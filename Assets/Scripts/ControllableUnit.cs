@@ -16,6 +16,8 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector] public State CurrentState = State.NotBeingControlled;
     [HideInInspector] public Rigidbody rigidbody;
     [HideInInspector] public PlayerInputActions playerInputActions;
+    [HideInInspector] public PlayerInput playerInput;
+
     public float Speed = 10f;
     [HideInInspector] public Vector3 startpos;
     [HideInInspector] public GameObject Cursor;
@@ -27,19 +29,29 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector]public MeshRenderer meshRenderer;
     [HideInInspector]public Material[] materials;
 
+    
+
     public bool DestroySelfAtStart = false;
 
     // Start is called before the first frame update
     void Start()
     {
         startpos = this.transform.position;
-        playerInputActions = new PlayerInputActions();
+        playerInputActions = CursorControls.playerInputActions;
         rigidbody = GetComponent<Rigidbody>();
         playerInputActions.UnitControls.Enable();
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
         UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
         UnitHealth = UnitClass.UnitMaxHealth;
+        playerInput = CursorControls.PlayerInput;
+
+        if (Gamepad.all.Count > 0)
+        {
+            Gamepad gamepad = Gamepad.current;
+            playerInput.SwitchCurrentControlScheme(gamepad);
+            
+        }
 
         meshRenderer = GetComponent<MeshRenderer>();
         materials = meshRenderer.materials;
@@ -84,9 +96,6 @@ public class ControllableUnit : MonoBehaviour
             {
                 transform.forward = new Vector3(inputVector.x, 0, inputVector.y);
             }
-
-
-
         }
     }
 
@@ -94,6 +103,8 @@ public class ControllableUnit : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
+        playerInput.SwitchCurrentActionMap("UnitControls");
+        Debug.Log(playerInput.currentControlScheme);
         playerInputActions.UnitControls.Enable();
     }
 
@@ -131,7 +142,7 @@ public class ControllableUnit : MonoBehaviour
 
     public void Aiming(InputAction.CallbackContext context)
     {
-        if(context.performed && CurrentState == State.BeingControlled)
+        if (context.performed && CurrentState == State.BeingControlled)
         {
             GameObject aoe = Instantiate(UnitClass.AOE, this.transform.position, Quaternion.identity);
             CurrentState = State.NotBeingControlled;
@@ -151,6 +162,7 @@ public class ControllableUnit : MonoBehaviour
         {
             CurrentState = State.BeingControlled;
             playerInputActions.UnitControls.Enable();
+            playerInput.SwitchCurrentActionMap("UnitControls");
         }
         else
         {

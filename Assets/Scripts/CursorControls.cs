@@ -10,7 +10,8 @@ public class CursorControls : MonoBehaviour
     private GameObject CurrentlyControlledUnit;
     private Rigidbody rigidbody;
     //private PlayerInput playerInput;
-    private PlayerInputActions playerInputActions;
+    [HideInInspector]public static PlayerInputActions playerInputActions;
+    [HideInInspector]public static PlayerInput PlayerInput;
     public float Speed = 10f;
 
     private ControllableUnit controllableUnit;
@@ -19,15 +20,21 @@ public class CursorControls : MonoBehaviour
     //UI elements 
     private Text DisplayHP;
     private Text DisplayAttack;
-    
+
+    private void Awake()
+    {
+        PlayerInput = GetComponent<PlayerInput>();
+        playerInputActions = new PlayerInputActions();
+    }
 
     void Start()
     {
         state = State.BeingControlled;
         rigidbody = GetComponent<Rigidbody>();
+        PlayerInput.SwitchCurrentActionMap("CursorControls");
         //playerInput = GetComponent<PlayerInput>();
 
-        playerInputActions = new PlayerInputActions();
+        
         playerInputActions.CursorControls.Enable();
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
 
@@ -168,6 +175,7 @@ public class CursorControls : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         playerInputActions.CursorControls.Enable();
+        PlayerInput.SwitchCurrentActionMap("CursorControls");
         state = State.BeingControlled;
         CurrentlyControlledUnit = null;
     }

@@ -57,6 +57,13 @@ public class ControllableUnit : MonoBehaviour
         materials = meshRenderer.materials;
     }
 
+    void SetUp()
+    {
+        playerInputActions.UnitControls.Attack.performed += Aiming;
+        playerInputActions.UnitControls.Wait.performed += Wait;
+        playerInputActions.UnitControls.DeselectUnit.performed += BackToCursor;
+    }
+
     private void FixedUpdate()
     {
         if (CurrentState == State.BeingControlled)
@@ -104,7 +111,7 @@ public class ControllableUnit : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CurrentState = State.BeingControlled;
         playerInput.SwitchCurrentActionMap("UnitControls");
-        Debug.Log(playerInput.currentControlScheme);
+        SetUp();
         playerInputActions.UnitControls.Enable();
     }
 

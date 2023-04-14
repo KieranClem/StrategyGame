@@ -15,9 +15,10 @@ public class Unit : ScriptableObject
 {
     public string UnitName;
     public float UnitMaxHealth;
-    public float UnitHealth;
+    //public float UnitHealth;
     public float UnitMovement;
     public float UnitAttack;
+    //Unused stats
     public float UnitDefense;
     public float UnitEvasiveness;
     public float UnitRange;
@@ -27,7 +28,7 @@ public class Unit : ScriptableObject
 
     private void Awake()
     {
-        UnitHealth = UnitMaxHealth;
+        //UnitHealth = UnitMaxHealth;
     }
 
     public float TakeDamage(float DamageTaken, float UnitCurrentHealth)
@@ -41,7 +42,7 @@ public class Unit : ScriptableObject
         UnitCurrentHealth += HealAmount;
         if(UnitCurrentHealth > UnitMaxHealth)
         {
-            UnitHealth = UnitMaxHealth;
+            UnitCurrentHealth = UnitMaxHealth;
         }
 
         return UnitCurrentHealth;

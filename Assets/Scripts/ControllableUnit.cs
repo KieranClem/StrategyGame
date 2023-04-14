@@ -29,10 +29,6 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector]public MeshRenderer meshRenderer;
     [HideInInspector]public Material[] materials;
 
-    
-
-    public bool DestroySelfAtStart = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +37,6 @@ public class ControllableUnit : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         playerInputActions.UnitControls.Enable();
         Cursor = GameObject.FindGameObjectWithTag("Cursor");
-        UnitClass.UnitHealth = UnitClass.UnitMaxHealth;
         turnManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<TurnManager>();
         UnitHealth = UnitClass.UnitMaxHealth;
         playerInput = CursorControls.PlayerInput;
@@ -57,6 +52,8 @@ public class ControllableUnit : MonoBehaviour
         materials = meshRenderer.materials;
     }
 
+
+    //Sets the functions of the unit to the corresponding action
     void SetUp()
     {
         playerInputActions.UnitControls.Attack.performed += Aiming;
@@ -154,7 +151,6 @@ public class ControllableUnit : MonoBehaviour
             GameObject aoe = Instantiate(UnitClass.AOE, this.transform.position, Quaternion.identity);
             CurrentState = State.NotBeingControlled;
             rigidbody.velocity = Vector3.zero;
-            //playerInputActions.UnitControls.Disable();
             aoe.transform.localScale = new Vector3(UnitClass.AOESize * 2, aoe.transform.localScale.y, UnitClass.AOESize * 2);
             aoe.GetComponent<AOEMovement>().SwitchToAOE(GetComponent<ControllableUnit>());
 
@@ -174,7 +170,6 @@ public class ControllableUnit : MonoBehaviour
         else
         {
             CurrentState = State.Waiting;
-            //playerInputActions.UnitControls.Disable();
             turnManager.AddWaitingPlayerUnit();
 
             //change materials for inactive state
@@ -200,7 +195,6 @@ public class ControllableUnit : MonoBehaviour
             transform.position = startpos;
         }
         StopShowingMovementRange();
-        //playerInputActions.UnitControls.Disable();
         StartCoroutine(Cursor.GetComponent<CursorControls>().ReturnCursorControl());
     }
 

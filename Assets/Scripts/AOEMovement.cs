@@ -240,7 +240,8 @@ public class AOEMovement : MonoBehaviour
             Instantiate(explosion, this.transform.position, Quaternion.identity);
             audioSource.Play();
             yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
-
+            GameObject tempSmoke = Instantiate(smoke, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
+            tempSmoke.GetComponent<DestroySmoke>().StartDestruction(smoke.GetComponent<ParticleSystem>().main.duration);
             enemyInControl.NotifOfAttackFinishing();
             yield return new WaitForSeconds(0.01f);
             Destroy(this.gameObject);

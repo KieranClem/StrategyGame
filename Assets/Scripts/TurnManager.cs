@@ -21,25 +21,17 @@ public class TurnManager : MonoBehaviour
     private Transform currentlyMovingEnemy;
     private LevelLoader levelLoader;
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
         foreach(GameObject PUnits in GameObject.FindGameObjectsWithTag("ControllableUnit"))
         {
-            if(!PUnits.GetComponent<ControllableUnit>().DestroySelfAtStart)
-            {
-                PlayerUnits.Add(PUnits);
-            }
+            PlayerUnits.Add(PUnits);
         }
 
         foreach (GameObject PUnits in GameObject.FindGameObjectsWithTag("ControllableHealer"))
         {
-            if (!PUnits.GetComponent<ControllableUnit>().DestroySelfAtStart)
-            {
-                PlayerUnits.Add(PUnits);
-            }
+            PlayerUnits.Add(PUnits);
         }
 
         foreach (GameObject EUnits in GameObject.FindGameObjectsWithTag("EnemyUnit"))
@@ -121,7 +113,7 @@ public class TurnManager : MonoBehaviour
         PlayerUnits.Remove(controllableUnit.gameObject);
         if(PlayerUnits.Count <= 0)
         {
-            //Game Over conditions go here
+            levelLoader.LoadGameOver();
         }
     }
 
@@ -140,13 +132,10 @@ public class TurnManager : MonoBehaviour
         if(DeathRowUnit.CompareTag("ControllableUnit") && (turn == CurrentTurn.PlayerTurn))
         {
             WaitingPlayerUnits -= 1;
-            Debug.Log("-1");
         }
         else if(DeathRowUnit.CompareTag("EnemyUnit") && (turn == CurrentTurn.EnemyTurn))
         {
             WaitingEnemyUnits -= 1;
         }
-
-        Debug.Log(WaitingPlayerUnits);
     }
 }

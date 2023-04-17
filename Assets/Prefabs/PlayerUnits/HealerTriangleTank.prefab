@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2263175897716858575}
   - component: {fileID: 5313793704603440210}
   - component: {fileID: 2341847854471007505}
-  - component: {fileID: 8204504030619672671}
   m_Layer: 3
   m_Name: HealerTriangleTank
   m_TagString: ControllableHealer
@@ -134,6 +133,7 @@ MonoBehaviour:
   UnitClass: {fileID: 11400000, guid: e53474c673ee8454b8a8642594aad01e, type: 2}
   CurrentState: 1
   rigidbody: {fileID: 0}
+  playerInput: {fileID: 0}
   Speed: 50
   startpos: {x: 0, y: 0, z: 0}
   Cursor: {fileID: 0}
@@ -141,151 +141,6 @@ MonoBehaviour:
   SpawnedRangeIndicator: {fileID: 0}
   UnitHealth: 0
   EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
-  DestroySelfAtStart: 0
+  meshRenderer: {fileID: 0}
+  materials: []
   heal: {fileID: 11400000, guid: e53474c673ee8454b8a8642594aad01e, type: 2}
---- !u!114 &8204504030619672671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2948140829174819589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 0403242304ac5ea4bbc0c27ce97f8d92, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 90c91984-5e05-4a30-9b6a-85b7e982e3d1
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8306ff93-95c7-4fbd-9bbe-3e9e155c7ac7
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fd9d0dfa-c6cb-4a93-9eca-bb3868bcaa6a
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d7c92321-3d71-441d-8476-01bc83efdd6d
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3d3001f3-30fb-4de0-9986-392322cb0431
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3c1690f7-5689-4da1-a861-78b8e01e4ecc
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2a4d35d9-8c60-40a9-980d-4b5b61d0712f
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cb0def7c-b0b3-4eba-aa81-dce5f32194c3
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6efa31ca-8146-40a0-96c4-cc62ff555dc0
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0f8f20f8-5922-48e7-9b23-f898e5b2722f
-    m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d28369ab-3efa-4980-81b8-29e6852cccaa
-    m_ActionName: CursorControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 55cd06d3-242f-4d56-a497-797836e7e13e
-    m_ActionName: CursorControls/TakeControlOfUnit[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fa3eeee1-ee84-49e8-89ad-9be06244ab16
-    m_ActionName: UnitControls/Movement
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2341847854471007505}
-        m_TargetAssemblyTypeName: ControllableUnit, Assembly-CSharp
-        m_MethodName: BackToCursor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 892f65b6-3aff-4c8c-8599-ed33dfc11680
-    m_ActionName: UnitControls/Buttons
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9fc65e45-c094-4dde-a56c-ee899449d4b7
-    m_ActionName: AimControls/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2341847854471007505}
-        m_TargetAssemblyTypeName: ControllableUnit, Assembly-CSharp
-        m_MethodName: Wait
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5de17b6b-53c8-42a2-a56d-962459a20261
-    m_ActionName: UnitControls/Wait[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2341847854471007505}
-        m_TargetAssemblyTypeName: ControllableUnit, Assembly-CSharp
-        m_MethodName: Aiming
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ee2434eb-2f14-41a9-b0b5-352f81091bdc
-    m_ActionName: UnitControls/Attack[/Keyboard/f]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 24d36252-4cfe-4081-a098-53c12cdffaa0
-    m_ActionName: AimControls/RotateAOE[/Keyboard/q,/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a8fb96db-dd14-4bbf-b6e9-63a6c2a9f877
-    m_ActionName: AimControls/Fire[/Keyboard/f]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bb85640f-8551-4a7d-ad1a-2cef6dfa9f5e
-    m_ActionName: AimControls/BackToUnit[/Keyboard/backspace]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UnitControls
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}

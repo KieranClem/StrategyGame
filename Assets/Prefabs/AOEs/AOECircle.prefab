@@ -235,7 +235,7 @@ MonoBehaviour:
   CurrentState: 1
   Speed: 10
   explosion: {fileID: 5040728934535680121, guid: ea008b6a529fa1d4fbc1d6a0508d1bd7, type: 3}
-  smoke: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
+  smoke: {fileID: 6716933543107358056, guid: 8a334e7c388e77347a1dddd727ef3446, type: 3}
   DamageText: {fileID: 6024482449157247473, guid: 183d73ecd4695214ebb7afa40be2fe5c, type: 3}
 --- !u!54 &3844578212304825222
 Rigidbody:

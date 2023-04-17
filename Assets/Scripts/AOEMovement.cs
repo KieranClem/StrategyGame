@@ -191,9 +191,10 @@ public class AOEMovement : MonoBehaviour
         audioSource.Play();
         CurrentState = State.NotBeingControlled;
         playerInputActions.AimControls.Disable();
-        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration / 2);
         GameObject tempSmoke = Instantiate(smoke, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
-        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration / 2);
+        yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
+
+        //yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration / 2);
         Destroy(temp);
         tempSmoke.GetComponent<DestroySmoke>().StartDestruction(smoke.GetComponent<ParticleSystem>().main.duration);
         StartCoroutine(ExitAOE(true));

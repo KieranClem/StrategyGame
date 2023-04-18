@@ -24,11 +24,19 @@ public class AOEMovement : MonoBehaviour
     {
         startpos = this.transform.position;
         playerInputActions = CursorControls.playerInputActions;
-        //playerInput = CursorControls.PlayerInput;
+        playerInput = CursorControls.PlayerInput;
         playerInputActions.AimControls.Enable();
         rigidbody = GetComponent<Rigidbody>();
         audioSource = this.GetComponent<AudioSource>();
+        SetUp();
     }
+
+    void SetUp()
+    {
+        playerInputActions.AimControls.Fire.performed += Fire;
+        playerInputActions.AimControls.BackToUnit.performed += BackToUnit;
+    }
+
 
     private void FixedUpdate()
     {
@@ -143,6 +151,7 @@ public class AOEMovement : MonoBehaviour
                         TextPop.GetComponent<DamagePopUp>().SetUp(UnitAiming.UnitClass.UnitAttack);
                     }
 
+                    rigidbody.velocity = Vector3.zero;
                     StartCoroutine(ExplodeToEndOfTurn());
                 }
             }
@@ -170,6 +179,7 @@ public class AOEMovement : MonoBehaviour
                         TextPop.GetComponent<DamagePopUp>().SetUp(healer.HealAmount);
                     }
 
+                    rigidbody.velocity = Vector3.zero;
                     StartCoroutine(ExplodeToEndOfTurn());
                 } 
             }
@@ -240,8 +250,8 @@ public class AOEMovement : MonoBehaviour
 
             Instantiate(explosion, this.transform.position, Quaternion.identity);
             audioSource.Play();
-            yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
             GameObject tempSmoke = Instantiate(smoke, new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z), Quaternion.identity);
+            yield return new WaitForSeconds(explosion.GetComponent<ParticleSystem>().main.duration);
             tempSmoke.GetComponent<DestroySmoke>().StartDestruction(smoke.GetComponent<ParticleSystem>().main.duration);
             enemyInControl.NotifOfAttackFinishing();
             yield return new WaitForSeconds(0.01f);

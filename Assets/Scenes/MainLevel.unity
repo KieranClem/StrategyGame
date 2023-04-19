@@ -3114,11 +3114,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e585f5c519178114f8e08ef7b7e71787, type: 3}
---- !u!4 &1100601356 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 997850405673148125, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
-  m_PrefabInstance: {fileID: 997850405122775626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1119247157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3328217234786519102, guid: e7bd78deed4d29d48be40d75d9a87490, type: 3}
@@ -6374,36 +6369,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5931176453004809132, guid: 5770eca1920b4174abedbd08fbcfb723, type: 3}
   m_PrefabInstance: {fileID: 1985512917}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1993801221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1993801222}
-  m_Layer: 0
-  m_Name: DirectionTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1993801222
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1993801221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1100601356}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1994709760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6652,25 +6617,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 997850405673148114, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Gamepad
-      objectReference: {fileID: 0}
-    - target: {fileID: 997850405673148115, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
-      propertyPath: Speed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 997850405673148115, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
-      propertyPath: DirectionTracker
-      value: 
-      objectReference: {fileID: 1993801221}
     - target: {fileID: 997850405673148121, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
       propertyPath: m_Name
       value: Cursor
-      objectReference: {fileID: 0}
-    - target: {fileID: 997850405673148121, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 997850405673148125, guid: 1248e1c8212952142820e7e49aca054e, type: 3}
       propertyPath: m_RootOrder

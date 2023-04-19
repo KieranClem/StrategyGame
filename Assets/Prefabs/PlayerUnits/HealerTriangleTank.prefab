@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2263175897716858575}
   - component: {fileID: 5313793704603440210}
   - component: {fileID: 2341847854471007505}
+  - component: {fileID: -1924950712150177900}
   m_Layer: 3
   m_Name: HealerTriangleTank
   m_TagString: ControllableHealer
@@ -143,4 +144,18 @@ MonoBehaviour:
   EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
   meshRenderer: {fileID: 0}
   materials: []
+  ReturnPoint: {x: 0, y: 0, z: 0}
   heal: {fileID: 11400000, guid: e53474c673ee8454b8a8642594aad01e, type: 2}
+--- !u!65 &-1924950712150177900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948140829174819589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3577912, y: 5.324369, z: 5.33548}
+  m_Center: {x: 0.0111261, y: -1.7583917, z: 0.44828114}

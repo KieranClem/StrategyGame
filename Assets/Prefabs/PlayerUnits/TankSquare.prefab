@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1309934933845899723}
   - component: {fileID: 1309934933845899724}
   - component: {fileID: 1309934933845899725}
+  - component: {fileID: 2061255782754942337}
   m_Layer: 3
   m_Name: TankSquare
   m_TagString: ControllableUnit
@@ -128,6 +129,7 @@ MonoBehaviour:
   EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
   meshRenderer: {fileID: 0}
   materials: []
+  ReturnPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &1309934933845899725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,3 +146,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
+--- !u!65 &2061255782754942337
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309934933845899727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3577914, y: 5.155485, z: 5.674488}
+  m_Center: {x: 0.011126161, y: -1.8428341, z: 0.6177851}

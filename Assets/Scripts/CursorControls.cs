@@ -21,6 +21,10 @@ public class CursorControls : MonoBehaviour
     private Text DisplayHP;
     private Text DisplayAttack;
 
+
+    public GameObject DirectionTracker;
+    private Vector3 returnPoint;
+
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
@@ -71,6 +75,10 @@ public class CursorControls : MonoBehaviour
             {
                 rigidbody.velocity = Vector3.zero;
             }
+            else
+            {
+                DirectionTracker.transform.forward = new Vector3(inputVector.x, 0, inputVector.y);
+            }
 
         }
     }
@@ -89,14 +97,23 @@ public class CursorControls : MonoBehaviour
                 ShowUI(other.gameObject);
                 break;
             case "InvisableWalls":
-                rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
+                rigidbody.AddForce(-rigidbody.velocity * (Speed * 2.5f));
                 rigidbody.velocity = Vector3.zero;
+                returnPoint = this.transform.position - DirectionTracker.transform.forward;
                 break;
             case "ControllableHealer":
                 controllableUnit = other.GetComponent<ControllableHealers>();
                 controllableUnit.ShowMovementRange();
                 ShowUI(other.gameObject);
                 break;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "InvisableWalls")
+        {
+            this.transform.position = returnPoint;
         }
     }
 

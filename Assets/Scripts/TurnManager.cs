@@ -39,8 +39,6 @@ public class TurnManager : MonoBehaviour
             EnemyUnits.Add(EUnits);
         }
 
-        Debug.Log(PlayerUnits.Count);
-
         DisplayTurn.text = "Player Turn";
         WaitingPlayerUnits = 0;
         WaitingEnemyUnits = 0;

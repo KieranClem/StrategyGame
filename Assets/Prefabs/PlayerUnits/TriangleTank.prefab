@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 342287814064384411}
   - component: {fileID: 342287814064384406}
   - component: {fileID: 342287814064384409}
+  - component: {fileID: -5149590502512185352}
   m_Layer: 3
   m_Name: TriangleTank
   m_TagString: ControllableUnit
@@ -126,6 +127,7 @@ MonoBehaviour:
   EndTurnMaterial: {fileID: -5243988174349660497, guid: e63bc13c3a117a645852bfca32838637, type: 3}
   meshRenderer: {fileID: 0}
   materials: []
+  ReturnPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &342287814064384409
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,3 +144,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
+--- !u!65 &-5149590502512185352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342287814064384410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3577912, y: 5.1174192, z: 5.33548}
+  m_Center: {x: 0.0111261, y: -1.8618671, z: 0.44828114}

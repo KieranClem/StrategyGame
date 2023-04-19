@@ -29,6 +29,10 @@ public class ControllableUnit : MonoBehaviour
     [HideInInspector]public MeshRenderer meshRenderer;
     [HideInInspector]public Material[] materials;
 
+    private bool IsMovementRangeShowing = false;
+
+    [HideInInspector] public Vector3 ReturnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -114,10 +118,14 @@ public class ControllableUnit : MonoBehaviour
 
     public void ShowMovementRange()
     {
-        Vector3 RangeSpawnLocation = new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z);
-        GameObject range = Instantiate(UnitClass.MovementCircle, RangeSpawnLocation, Quaternion.identity);
-        SpawnedRangeIndicator = range;
-        SpawnedRangeIndicator.transform.localScale = new Vector3(UnitClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, UnitClass.UnitMovement * 2);
+        if (!IsMovementRangeShowing)
+        {
+            Vector3 RangeSpawnLocation = new Vector3(this.transform.position.x, this.transform.position.y - 0.5f, this.transform.position.z);
+            GameObject range = Instantiate(UnitClass.MovementCircle, RangeSpawnLocation, Quaternion.identity);
+            SpawnedRangeIndicator = range;
+            SpawnedRangeIndicator.transform.localScale = new Vector3(UnitClass.UnitMovement * 2, SpawnedRangeIndicator.transform.localScale.y, UnitClass.UnitMovement * 2);
+            IsMovementRangeShowing = true;
+        }
     }
 
     public void StopShowingMovementRange()
@@ -125,6 +133,7 @@ public class ControllableUnit : MonoBehaviour
         if (SpawnedRangeIndicator)
         {
             Destroy(SpawnedRangeIndicator);
+            IsMovementRangeShowing = false;
         }
     }
 
@@ -219,6 +228,16 @@ public class ControllableUnit : MonoBehaviour
         {
             rigidbody.AddForce(-rigidbody.velocity * (Speed * 2f));
             rigidbody.velocity = Vector3.zero;
+            ReturnPoint = this.transform.position - this.transform.forward;
+        }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "InvisableWalls")
+        {
+            this.transform.position = ReturnPoint;
         }
     }
 

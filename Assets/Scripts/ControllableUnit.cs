@@ -180,7 +180,7 @@ public class ControllableUnit : MonoBehaviour
         {
             CurrentState = State.Waiting;
             turnManager.AddWaitingPlayerUnit();
-
+            playerInput.SwitchCurrentActionMap("UnitControls");
             //change materials for inactive state
             Material[] OldMaterials = meshRenderer.materials;
             for (int i = 0; i < OldMaterials.Length; i++)

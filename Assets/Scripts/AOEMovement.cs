@@ -219,6 +219,8 @@ public class AOEMovement : MonoBehaviour
     private IEnumerator ExitAOE(bool TurnEnded)
     {
         StartCoroutine(UnitAiming.ReturnUnitControl(TurnEnded));
+        playerInputActions.AimControls.Fire.performed -= Fire;
+        playerInputActions.AimControls.BackToUnit.performed -= BackToUnit;
         yield return new WaitForSeconds(0.1f);
         Destroy(this.gameObject);
     }

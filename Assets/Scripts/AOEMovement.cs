@@ -85,7 +85,10 @@ public class AOEMovement : MonoBehaviour
     {
         if(other.tag == "ControllableUnit")
         {
-            UnitsInRange.Add(other.gameObject);
+            if(!UnitsInRange.Contains(other.gameObject))
+            {
+                UnitsInRange.Add(other.gameObject);
+            }
         }
 
         if(other.tag == "EnemyUnit")
@@ -95,7 +98,10 @@ public class AOEMovement : MonoBehaviour
 
         if(other.tag == "ControllableHealer")
         {
-            UnitsInRange.Add(other.gameObject);
+            if (!UnitsInRange.Contains(other.gameObject))
+            {
+                UnitsInRange.Add(other.gameObject);
+            }
         }
     }
 
@@ -247,6 +253,7 @@ public class AOEMovement : MonoBehaviour
                 TextPop.GetComponent<DamagePopUp>().SetUp(enemyInControl.EnemyClass.UnitAttack);
 
             }
+
 
             Instantiate(explosion, this.transform.position, Quaternion.identity);
             audioSource.Play();
